@@ -1,0 +1,45 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\obj\\Debug\\net8.0-android\\scopedcss\\bundle\\TransactionsMate.styles.css",
+      "PackagePath": "staticwebassets\\TransactionsMate.styles.css"
+    },
+    {
+      "Id": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0-android\\staticwebassets\\msbuild.TransactionsMate.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0-android\\staticwebassets\\msbuild.build.TransactionsMate.props",
+      "PackagePath": "build\\TransactionsMate.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0-android\\staticwebassets\\msbuild.buildMultiTargeting.TransactionsMate.props",
+      "PackagePath": "buildMultiTargeting\\TransactionsMate.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0-android\\staticwebassets\\msbuild.buildTransitive.TransactionsMate.props",
+      "PackagePath": "buildTransitive\\TransactionsMate.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

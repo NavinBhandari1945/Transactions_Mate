@@ -1,0 +1,1 @@
+D:\College Workplace\3rdyr\sem1\app development\cw\desktop app\TransactionsMate\TransactionsMate\TransactionsMate.csproj;x64
