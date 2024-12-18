@@ -1,8 +1,22 @@
-﻿@page "/"
+﻿@page "/userhome"
+@inject NavigationManager Navigation
 
-<h3>User_Home</h3>
+<h3>User Home</h3>
+<br />
+<h1>Email: @Email</h1>
 
-@code
-{
+@code {
+    [Parameter] public string Email { get; set; }
 
+    protected override void OnInitialized()
+    {
+        var uri = Navigation.ToAbsoluteUri(Navigation.Uri);
+        var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
+        Email = query["email"];
+
+        if (string.IsNullOrEmpty(Email))
+        {
+            Navigation.NavigateTo("/"); // Redirect to Login if no email is found in query
+        }
+    }
 }
