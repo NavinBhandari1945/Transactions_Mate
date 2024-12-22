@@ -1,0 +1,41 @@
+﻿@page "/adminhome"
+@using static TransactionsMate.Components.Layout.MainLayout
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+<h3>Admin_Home</h3>
+<br />
+<button type="button" @onclick="Logout">Logout</button>
+<script>
+    function showAlert(message) {
+        alert(message);
+    }
+</script>
+
+@code {
+    [CascadingParameter]
+    public RequiredDetails requiredDetails { get; set; }
+
+    public async Task Logout()
+    {
+        try
+        {
+            requiredDetails.CurrencyTypeUser = "";
+            requiredDetails.CurrentUserUsername = "";
+            await JS.InvokeVoidAsync("console.log", "logout success.");
+            await JS.InvokeVoidAsync("showAlert", "Logout success.");
+            Navigation.NavigateTo("/");
+            return;
+        }
+        catch (Exception obj)
+        {
+            await JS.InvokeVoidAsync("console.log", "logout fail.");
+            await JS.InvokeVoidAsync("console.log", "Exception occur.");
+            await JS.InvokeVoidAsync("console.log", $"{obj.ToString()}");
+            await JS.InvokeVoidAsync("showAlert", "Logout fail.");
+            return;
+        }
+
+    }
+
+}
+

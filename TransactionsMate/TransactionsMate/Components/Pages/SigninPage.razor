@@ -1,12 +1,118 @@
 ﻿@page "/signinpage"
+@inject NavigationManager Navigation
+@using TransactionsMate.Models
+@using static TransactionsMate.Components.Layout.MainLayout
+@inject IJSRuntime JS
 <h3>SigninPage</h3>
+
+<div>
+    <form>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Enter First name</label>
+            <input type="text" class="form-control" id="exampleInputFirstName" @bind="first_name">
+        </div>
+        <br>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Enter Last name</label>
+            <input type="text" class="form-control" id="exampleInputlastname" @bind="last_name">
+        </div>
+        <br>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Enter username</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" @bind="username">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <br />
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Enter Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" @bind="password">
+        </div>
+        <br />
+        <button type="button" class="btn btn-primary" @onclick="SignInUser">SignIn</button>
+    </form>
+</div>
 
 <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
     <span class="oi oi-home" aria-hidden="true"></span> Go to Login page.
 </NavLink>
 
+<script>
+    function showAlert(message) 
+    {
+        alert(message); // Display the custom message in the alert box
+    }
+</script>
+
 @code 
 {
+    string username = "";
+    string password = "";
+    string first_name = "";
+    string last_name = "";
+    float initial_available_balance = 0.0f;
+    float initial_debt_balance = 0.0f;
+
+
+    [CascadingParameter]
+    public RequiredDetails requiredDetails { get; set; }
+
+    public async Task SignInUser()
+    {
+        try
+        {
+            await JS.InvokeVoidAsync("console.log", "requiredDetails user_info_list count");
+            await JS.InvokeVoidAsync("console.log", $"{requiredDetails.user_info_list.Count()}");
+            if(requiredDetails.user_info_list.Count()>0)
+            {
+                var current_user_data = requiredDetails.user_info_list.FirstOrDefault(x => x.Username == username);
+                if (current_user_data != null)
+                {
+                    await JS.InvokeVoidAsync("console.log", "Username same");
+                    await JS.InvokeVoidAsync("showAlert", "Username same.Use different.");
+            
+                    return;
+                }
+                else
+                {
+                    
+                    UserInfMoodel obj = new UserInfMoodel(user_username: username, user_userPassword: password, user_AvailableBalance: initial_available_balance,
+                        user_DebtBalance: initial_debt_balance, user_firstName: first_name, user_lastName: last_name,user_type:"user");
+                    requiredDetails.user_info_list.Add(obj);
+                    await JS.InvokeVoidAsync("console.log", "signin success");
+                    // await JS.InvokeVoidAsync("console.log", $"{requiredDetails.user_info_list[0].Username}");
+                    await JS.InvokeVoidAsync("console.log", "user_info_list count value");
+                    await JS.InvokeVoidAsync("console.log", $"{requiredDetails.user_info_list.Count().ToString()}");
+                    await JS.InvokeVoidAsync("showAlert", "Sign-in successful!");
+                    Navigation.NavigateTo("/signinpage", forceLoad: false);
+                    return;
+                }   
+            }
+            else
+            {
+                
+                UserInfMoodel obj = new UserInfMoodel(user_username: username, user_userPassword: password, user_AvailableBalance: initial_available_balance,
+                    user_DebtBalance: initial_debt_balance, user_firstName: first_name, user_lastName: last_name,user_type:"user");
+                requiredDetails.user_info_list.Add(obj);
+                await JS.InvokeVoidAsync("console.log", "signin success");
+                // await JS.InvokeVoidAsync("console.log", $"{requiredDetails.user_info_list[0].Username}");
+                await JS.InvokeVoidAsync("console.log", "user_info_list count value");
+                await JS.InvokeVoidAsync("console.log", $"{requiredDetails.user_info_list.Count().ToString()}");
+                await JS.InvokeVoidAsync("showAlert", "Sign-in successful!");
+                Navigation.NavigateTo("/signinpage", forceLoad: false);
+                return;
+            }
+        }catch(Exception obj)
+        {
+            await JS.InvokeVoidAsync("console.log", "signin fail");
+            await JS.InvokeVoidAsync("console.log", "exception caught");
+            await JS.InvokeVoidAsync("console.log", $"{obj.ToString}");
+            await JS.InvokeVoidAsync("console.log", "{user_info_list count value}");
+            await JS.InvokeVoidAsync("console.log", $"{requiredDetails.user_info_list.Count()}");
+            await JS.InvokeVoidAsync("showAlert", "signin fail");
+       
+            return;
+        }
+    }
 
 
 

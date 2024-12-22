@@ -1,22 +1,1550 @@
 ﻿@page "/userhome"
+@using TransactionsMate.Models
+@using static TransactionsMate.Components.Layout.MainLayout
+@inject IJSRuntime JS
 @inject NavigationManager Navigation
 
-<h3>User Home</h3>
-<br />
-<h1>Email: @Email</h1>
 
-@code {
-    [Parameter] public string Email { get; set; }
 
-    protected override void OnInitialized()
+
+<style>
+    /* Main Container */
+    .main-container {
+        max-height: 100vh;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .child-container {
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+        .child-container h5 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+    /* Balance Box */
+    .balance-box {
+        text-align: center;
+        padding: 15px;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+    }
+
+        .balance-box.available {
+            border: 2px solid #28a745;
+        }
+
+        .balance-box.debt {
+            border: 2px solid #dc3545;
+        }
+
+    /* Calendar Popup */
+    .calendar-popup {
+        position: absolute;
+        background: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        padding: 15px;
+        z-index: 1000;
+    }
+
+        .calendar-popup input {
+            margin-bottom: 10px;
+        }
+
+    .calendar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.2);
+        z-index: 999;
+    }
+
+    /* Transaction Form */
+    .transaction-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .transaction-form label {
+            font-weight: bold;
+        }
+
+    .transaction-form button {
+            margin-top: 10px;
+        }
+
+    /* Container 5 Specific Styles */
+    .child-container {
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+        .child-container h5 {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: #343a40;
+        }
+
+    .sub-container {
+        margin-bottom: 20px;
+        padding: 10px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        border: 1px solid #dee2e6;
+    }
+
+        .sub-container label {
+            font-weight: bold;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 5px;
+            color: #495057;
+        }
+
+    .tag-display {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: #007bff;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .table-responsive {
+        max-height: 300px;
+        overflow-y: auto;
+    }
+
+    .table {
+        margin-bottom: 0;
+        width: 100%;
+        text-align: center;
+        border-collapse: collapse;
+    }
+
+    .table-bordered {
+        border: 1px solid #dee2e6;
+    }
+
+        .table-bordered th,
+        .table-bordered td {
+            text-align: center;
+            vertical-align: middle;
+            padding: 8px;
+            border: 1px solid #dee2e6;
+        }
+
+    .table-light th {
+        background-color: #f8f9fa;
+        color: #495057;
+        font-weight: bold;
+    }
+
+    .table tbody tr:nth-child(odd) {
+        background-color: #f1f3f5;
+    }
+
+    .table tbody tr:nth-child(even) {
+        background-color: #fff;
+    }
+
+
+</style>
+
+<!-- Main Container -->
+<div class="container-fluid main-container">
+    <h1 class="text-center mb-4">User Dashboard</h1>
+
+    <!-- Container 1: User Info & Actions -->
+    <div class="child-container">
+        <h5>User Info & Actions</h5>
+        <div class="row mb-3">
+            <!-- Available Balance -->
+            <div class="col-md-6">
+                <div class="balance-box available">
+                    <h6>Available Balance</h6>             
+                    <p class="fs-4 fw-bold">@requiredDetails.CurrencyTypeUser :@GetUserAvailableBalance()</p>
+                </div>
+            </div>
+            <!-- Debt Balance -->
+            <div class="col-md-6">
+                <div class="balance-box debt">
+                    <h6>Debt Balance</h6>
+                    <p class="fs-4 fw-bold">@requiredDetails.CurrencyTypeUser : @GetUserDebtBalance()</p>
+                </div>
+            </div>
+        </div>
+        <!-- Action Buttons -->
+        <div class="d-flex flex-wrap gap-2 justify-content-center">
+            <button class="btn btn-primary" @onclick="ToggleDateRangePicker">
+                Sort <i class="bi bi-calendar"></i>
+            </button>
+            <button class="btn btn-secondary">Update Title</button>
+            <button class="btn btn-secondary">Update Note</button>
+            <button class="btn btn-secondary">Check Outflow</button>
+            <button class="btn btn-danger" @onclick="Logout">Logout</button>
+        </div>
+    </div>
+
+    <!-- Date Range Picker Popup -->
+    @if (IsDateRangePickerVisible)
     {
-        var uri = Navigation.ToAbsoluteUri(Navigation.Uri);
-        var query = System.Web.HttpUtility.ParseQueryString(uri.Query);
-        Email = query["email"];
+        <div class="calendar-overlay" @onclick="ToggleDateRangePicker"></div>
+        <div class="calendar-popup">
+            <h6>Select Date Range</h6>
+            <label>From Date:</label>
+            <input type="date" class="form-control" @bind="FromDate" />
+            <label>To Date:</label>
+            <input type="date" class="form-control" @bind="ToDate" />
+            <div class="mt-2 d-flex justify-content-end gap-2">
+                <button class="btn btn-success" @onclick="ApplyDateRange">Apply</button>
+                <button class="btn btn-secondary" @onclick="ToggleDateRangePicker">Cancel</button>
+            </div>
+        </div>
+    }
 
-        if (string.IsNullOrEmpty(Email))
-        {
-            Navigation.NavigateTo("/"); // Redirect to Login if no email is found in query
+    <!-- Container 2: Transaction Form -->
+    <div class="child-container">
+        <h5>Transaction Form</h5>
+        <form class="transaction-form">
+            <label>Transaction Flow</label>
+
+            <select class="form-select" @bind="TransactionsFlow">
+                <option selected>Select the TransactionsFlow.</option>
+                <option value="In">In</option>
+                <option value="Out">Out</option>
+            </select>
+
+            <label>Transaction Type</label>
+            <select class="form-select" @bind="TransactionsType">
+                <option selected>Select the TransactionsType.</option>
+                <option value="Credit">Credit</option>
+                <option value="Debit">Debit</option>
+            </select>
+
+            <label>Transaction Date</label>
+            <input type="date" @bind="TransactionsDate" class="form-control" />
+
+            <label>Transaction Amount</label>
+            <input type="number" @bind="TransactionsAmount" class="form-control" placeholder="Enter amount" />
+
+            <label>Transaction Note</label>
+            <input type="text" @bind="TransactionsNote" class="form-control" placeholder="Enter note" />
+
+            <label>Transaction Title</label>
+            <input type="text" @bind="TransactionsTittle" class="form-control" placeholder="Enter title" />
+
+            <label>Transaction Source</label>
+            <input type="text" @bind="TransactionsSource" class="form-control" placeholder="Enter source" />
+
+            <label>Transaction ID (For Update Only)</label>
+            <input type="text" @bind="TransactionsId" class="form-control" placeholder="Enter ID" />
+
+            <button type="button" @onclick="DoTransactions" class="btn btn-success w-100 mt-3">Do Transaction</button>
+        </form>
+    </div>
+
+    <!-- Container 3: Transactions Details -->
+    <div class="child-container">
+        <h5>Transaction Details</h5>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <!-- Label -->
+            <label class="fw-bold">All Transactions</label>
+            <!-- Search Field -->
+            <input type="text" class="form-control w-50" placeholder="Search by title" />
+            <!-- Sort Dropdown -->
+            <select class="form-select w-auto">
+                <option value="all">All</option>
+                <option value="credit">Credit</option>
+                <option value="debit">Debit</option>
+                <option value="debt">Debt</option>
+            </select>
+        </div>
+
+        <!-- Transactions Table -->
+        <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+            <table class="table table-bordered">
+                <thead class="table-light">
+                    <tr>
+                        <th>ID</th>
+                        <th>Type</th>
+                        <th>Title</th>
+                        <th>Flow</th>
+                        <th>Date</th>
+                        <th>Source</th>
+                        <th>Note</th>
+                        <th>Amount</th>
+                        <th>Username</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var data in requiredDetails.transactions_info_list.ToList())
+                    {
+                        <tr>
+                            <td>@data.TrId</td>
+                            <td>@data.TrType</td>
+                            <td>@data.TrTitle</td>
+                            <td>@data.TrFlow</td>
+                            <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
+                            <td>@data.TrSource</td>
+                            <td>@data.TrNote</td>
+                            <td>@data.TrAmount.ToString("C")</td>
+                            <td>@data.UserUsername</td>
+                        </tr>
+                    }
+                    <!-- Additional rows should be dynamically generated -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Container 4: Debt Transactions Details -->
+    <div class="child-container">
+        <h5>Debt Transactions Details</h5>
+
+        <!-- Section 1: All Debt Transactions -->
+        <div class="mb-4">
+            <label class="fw-bold">All Debt Transactions</label>
+            <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Debt ID</th>
+                            <th>Transaction Type</th>
+                            <th>Debt Title</th>
+                            <th>Debt Date</th>
+                            <th>Debt Source</th>
+                            <th>Debt Amount</th>
+                            <th>Transaction Flow</th>
+                            <th>Debt Status</th>
+                            <th>Transaction Status</th>
+                            <th>Username</th>
+                            <th>Debt Note</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example Row -->
+
+                        @foreach(var data in requiredDetails.debt_info_list.ToList())
+                        {
+                            <tr>
+                                <td>@data.DebtId</td>
+                                <td>@data.TransactionType</td>
+                                <td>@data.DebtTitle</td>
+                                <td>@data.DebtDate.ToString("yyyy-MM-dd")</td>
+                                <td>@data.DebtSource</td>
+                                <td>@data.DebtAmount.ToString("C")</td>
+                                <td>@data.TransactionFlow</td>
+                                <td>@data.DebtStatus</td>
+                                <td>@data.TransactionStatus</td>
+                                <td>@data.Username</td>
+                                <td>@data.DebtNote</td>
+                            </tr>
+                        }
+                        <!-- Additional rows dynamically generated -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 2: Pending Debt to Pay -->
+        <div class="mb-4">
+            <label class="fw-bold">Pending Debt to Pay</label>
+            <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Debt ID</th>
+                            <th>Transaction Type</th>
+                            <th>Debt Title</th>
+                            <th>Debt Date</th>
+                            <th>Debt Source</th>
+                            <th>Debt Amount</th>
+                            <th>Transaction Flow</th>
+                            <th>Debt Status</th>
+                            <th>Transaction Status</th>
+                            <th>Username</th>
+                            <th>Debt Note</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var data in requiredDetails.debt_info_list.Where(debt => debt.DebtStatus == "to pay"))
+                        {
+                            <tr>
+                                <td>@data.DebtId</td>
+                                <td>@data.TransactionType</td>
+                                <td>@data.DebtTitle</td>
+                                <td>@data.DebtDate.ToString("yyyy-MM-dd")</td>
+                                <td>@data.DebtSource</td>
+                                <td>@data.DebtAmount.ToString("C")</td>
+                                <td>@data.TransactionFlow</td>
+                                <td>@data.DebtStatus</td>
+                                <td>@data.TransactionStatus</td>
+                                <td>@data.Username</td>
+                                <td>@data.DebtNote</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Section 3: Clear Debt -->
+        <div>
+            <label class="fw-bold">Clear Debt</label>
+            <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Debt ID</th>
+                            <th>Transaction Type</th>
+                            <th>Debt Title</th>
+                            <th>Debt Date</th>
+                            <th>Debt Source</th>
+                            <th>Debt Amount</th>
+                            <th>Transaction Flow</th>
+                            <th>Debt Status</th>
+                            <th>Transaction Status</th>
+                            <th>Username</th>
+                            <th>Debt Note</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example Row -->
+                        @foreach (var data in requiredDetails.debt_info_list.Where(debt => debt.DebtStatus == "paid"))
+                        {
+                            <tr>
+                                <td>@data.DebtId</td>
+                                <td>@data.TransactionType</td>
+                                <td>@data.DebtTitle</td>
+                                <td>@data.DebtDate.ToString("yyyy-MM-dd")</td>
+                                <td>@data.DebtSource</td>
+                                <td>@data.DebtAmount.ToString("C")</td>
+                                <td>@data.TransactionFlow</td>
+                                <td>@data.DebtStatus</td>
+                                <td>@data.TransactionStatus</td>
+                                <td>@data.Username</td>
+                                <td>@data.DebtNote</td>
+                            </tr>
+                        }
+                        <!-- Additional rows dynamically generated -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container 5: Total Inflow, Outflow, and Highlights -->
+    <div class="child-container">
+        <h5>Total Inflow, Outflow, and Highlights</h5>
+
+        <!-- Total Inflow -->
+        <div class="sub-container">
+            <label>Total Inflow:</label>
+            <p class="tag-display">@requiredDetails.CurrencyTypeUser : @TotalInflow</p>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Title</th>
+                            <th>Flow</th>
+                            <th>Date</th>
+                            <th>Source</th>
+                            <th>Note</th>
+                            <th>Amount</th>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var data in requiredDetails.transactions_info_list.Where(x=>x.UserUsername == requiredDetails.CurrentUserUsername && x.TrFlow=="In").ToList())
+                        {
+                            <tr>
+                                <td>@data.TrId</td>
+                                <td>@data.TrType</td>
+                                <td>@data.TrTitle</td>
+                                <td>@data.TrFlow</td>
+                                <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
+                                <td>@data.TrSource</td>
+                                <td>@data.TrNote</td>
+                                <td>@data.TrAmount.ToString("C")</td>
+                                <td>@data.UserUsername</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Total Outflow -->
+        <div class="sub-container">
+            <label>Total Outflow:</label>
+            <p class="tag-display">@requiredDetails.CurrencyTypeUser : @TotalOutflow </p>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Title</th>
+                            <th>Flow</th>
+                            <th>Date</th>
+                            <th>Source</th>
+                            <th>Note</th>
+                            <th>Amount</th>
+                            <th>Username</th>
+                        </tr>
+                     
+                    </thead>
+                    <tbody>
+                        @foreach (var data in requiredDetails.transactions_info_list.Where(x => x.UserUsername == requiredDetails.CurrentUserUsername && x.TrFlow == "Out").ToList())
+                        {
+                            <tr>
+                                <td>@data.TrId</td>
+                                <td>@data.TrType</td>
+                                <td>@data.TrTitle</td>
+                                <td>@data.TrFlow</td>
+                                <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
+                                <td>@data.TrSource</td>
+                                <td>@data.TrNote</td>
+                                <td>@data.TrAmount.ToString("C")</td>
+                                <td>@data.UserUsername</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Highest Inflow -->
+        <div class="sub-container">
+            <label>Highest Inflow:</label>
+            <p class="tag-display">@requiredDetails.CurrencyTypeUser : @HighestInflowTransaction</p>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Title</th>
+                            <th>Flow</th>
+                            <th>Date</th>
+                            <th>Source</th>
+                            <th>Note</th>
+                            <th>Amount</th>
+                            <th>Username</th>
+                        </tr>
+            
+                    </thead>
+                    <tbody>
+                        @foreach (var data in requiredDetails.transactions_info_list.Where(x => x.UserUsername == requiredDetails.CurrentUserUsername && x.TrFlow == "In" && x.TrAmount.ToString() == HighestInflowTransaction.ToString()).ToList())
+                        {
+                            <tr>
+                                <td>@data.TrId</td>
+                                <td>@data.TrType</td>
+                                <td>@data.TrTitle</td>
+                                <td>@data.TrFlow</td>
+                                <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
+                                <td>@data.TrSource</td>
+                                <td>@data.TrNote</td>
+                                <td>@data.TrAmount.ToString("C")</td>
+                                <td>@data.UserUsername</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Lowest Inflow -->
+        <div class="sub-container">
+            <label>Lowest Inflow:</label>
+            <p class="tag-display">@requiredDetails.CurrencyTypeUser : @LowestInflowTransaction</p>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Title</th>
+                            <th>Flow</th>
+                            <th>Date</th>
+                            <th>Source</th>
+                            <th>Note</th>
+                            <th>Amount</th>
+                            <th>Username</th>
+                        </tr>
+                      
+                    </thead>
+                    <tbody>
+                        <!-- Data dynamically populated -->
+                        @foreach (var data in requiredDetails.transactions_info_list.Where(x => x.UserUsername == requiredDetails.CurrentUserUsername && x.TrFlow == "In" && x.TrAmount.ToString() == LowestInflowTransaction.ToString()).ToList())
+                        {
+                            <tr>
+                                <td>@data.TrId</td>
+                                <td>@data.TrType</td>
+                                <td>@data.TrTitle</td>
+                                <td>@data.TrFlow</td>
+                                <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
+                                <td>@data.TrSource</td>
+                                <td>@data.TrNote</td>
+                                <td>@data.TrAmount.ToString("C")</td>
+                                <td>@data.UserUsername</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Highest Outflow -->
+        <div class="sub-container">
+            <label>Highest Outflow:</label>
+            <p class="tag-display">@requiredDetails.CurrencyTypeUser: @HighestOutflowTransaction</p>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Title</th>
+                            <th>Flow</th>
+                            <th>Date</th>
+                            <th>Source</th>
+                            <th>Note</th>
+                            <th>Amount</th>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var data in requiredDetails.transactions_info_list.Where(x => x.UserUsername == requiredDetails.CurrentUserUsername && x.TrFlow == "Out" && x.TrAmount.ToString() == HighestOutflowTransaction.ToString()).ToList())
+                        {
+                            <tr>
+                                <td>@data.TrId</td>
+                                <td>@data.TrType</td>
+                                <td>@data.TrTitle</td>
+                                <td>@data.TrFlow</td>
+                                <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
+                                <td>@data.TrSource</td>
+                                <td>@data.TrNote</td>
+                                <td>@data.TrAmount.ToString("C")</td>
+                                <td>@data.UserUsername</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Lowest Outflow -->
+        <div class="sub-container">
+            <label>Lowest Outflow:</label>
+            <p class="tag-display">@requiredDetails.CurrencyTypeUser : @LowestOutflowTransaction</p>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Title</th>
+                            <th>Flow</th>
+                            <th>Date</th>
+                            <th>Source</th>
+                            <th>Note</th>
+                            <th>Amount</th>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var data in requiredDetails.transactions_info_list.Where(x => x.UserUsername == requiredDetails.CurrentUserUsername && x.TrFlow == "Out" && x.TrAmount.ToString() == LowestOutflowTransaction.ToString()).ToList())
+                        {
+                            <tr>
+                                <td>@data.TrId</td>
+                                <td>@data.TrType</td>
+                                <td>@data.TrTitle</td>
+                                <td>@data.TrFlow</td>
+                                <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
+                                <td>@data.TrSource</td>
+                                <td>@data.TrNote</td>
+                                <td>@data.TrAmount.ToString("C")</td>
+                                <td>@data.UserUsername</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Container for Debt Transactions (Highest and Lowest Debts) -->
+        <div class="child-container">
+            <h5>Debt Transactions Details</h5>
+
+            <!-- Section 1: Lowest Debt -->
+            <div class="mb-4">
+                <label class="fw-bold">Lowest Debt</label>
+                <p class="tag-display" id="lowest-debt-amount">@requiredDetails.CurrencyTypeUser : @LowestDebt</p>
+                <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Debt ID</th>
+                                <th>Transaction Type</th>
+                                <th>Debt Title</th>
+                                <th>Debt Date</th>
+                                <th>Debt Source</th>
+                                <th>Debt Amount</th>
+                                <th>Transaction Flow</th>
+                                <th>Debt Status</th>
+                                <th>Transaction Status</th>
+                                <th>Username</th>
+                                <th>Debt Note</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var data in requiredDetails.debt_info_list.Where(x => x.Username == requiredDetails.CurrentUserUsername && x.TransactionType == "Debt" && x.DebtAmount.ToString() == LowestDebt.ToString()).ToList())
+                            {
+                                <tr>
+                                    <td>@data.DebtId</td>
+                                    <td>@data.TransactionType</td>
+                                    <td>@data.DebtTitle</td>
+                                    <td>@data.DebtDate.ToString("yyyy-MM-dd")</td>
+                                    <td>@data.DebtSource</td>
+                                    <td>@data.DebtAmount.ToString("C")</td>
+                                    <td>@data.TransactionFlow</td>
+                                    <td>@data.DebtStatus</td>
+                                    <td>@data.TransactionStatus</td>
+                                    <td>@data.Username</td>
+                                    <td>@data.DebtNote</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Section 2: Highest Debt -->
+            <div class="mb-4">
+                <label class="fw-bold">Highest Debt</label>
+                <p class="tag-display" id="highest-debt-amount">@requiredDetails.CurrencyTypeUser : @HighestDebt</p>
+                <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Debt ID</th>
+                                <th>Transaction Type</th>
+                                <th>Debt Title</th>
+                                <th>Debt Date</th>
+                                <th>Debt Source</th>
+                                <th>Debt Amount</th>
+                                <th>Transaction Flow</th>
+                                <th>Debt Status</th>
+                                <th>Transaction Status</th>
+                                <th>Username</th>
+                                <th>Debt Note</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var data in requiredDetails.debt_info_list.Where(x => x.Username == requiredDetails.CurrentUserUsername && x.TransactionType == "Debt" && x.DebtAmount.ToString() == HighestDebt.ToString()).ToList())
+                            {
+                                <tr>
+                                    <td>@data.DebtId</td>
+                                    <td>@data.TransactionType</td>
+                                    <td>@data.DebtTitle</td>
+                                    <td>@data.DebtDate.ToString("yyyy-MM-dd")</td>
+                                    <td>@data.DebtSource</td>
+                                    <td>@data.DebtAmount.ToString("C")</td>
+                                    <td>@data.TransactionFlow</td>
+                                    <td>@data.DebtStatus</td>
+                                    <td>@data.TransactionStatus</td>
+                                    <td>@data.Username</td>
+                                    <td>@data.DebtNote</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> @* main container *@
+
+<script>
+    function showAlert(message) {
+        alert(message);
+    }
+
+    function showConfirm(message, dotNetHelper) {
+        if (confirm(message)) {
+            dotNetHelper.invokeMethodAsync("ProceedWithDebt");
+        } else {
+            dotNetHelper.invokeMethodAsync("CancelTransaction");
         }
     }
+
+</script>
+
+@code {
+
+    public string TransactionsFlow { get; set; }
+    public string TransactionsType { get; set; }
+    public DateTime TransactionsDate { get; set; }
+    public float TransactionsAmount { get; set; }
+    public string TransactionsSource { get; set; }
+    public string TransactionsNote { get; set; }
+    public string TransactionsTittle { get; set; }
+    public string TransactionsId { get; set; }
+
+    public bool IsDateRangePickerVisible { get; set; } = false;
+    public DateTime? FromDate { get; set; }
+    public DateTime? ToDate { get; set; }
+
+
+    public float HighestInflowTransaction { get; set; } = 0.0f;
+    public float LowestInflowTransaction { get; set; } = 0.0f;
+    public float HighestOutflowTransaction { get; set; } = 0.0f;
+    public float LowestOutflowTransaction { get; set; } = 0.0f;
+    public float TotalInflow { get; set; } = 0.0f;
+    public float TotalOutflow { get; set; } = 0.0f;
+
+    // Properties for Debts
+    public float HighestDebt { get; set; } = 0.0f;
+    public float LowestDebt { get; set; } = 0.0f;
+
+    [CascadingParameter]
+    public RequiredDetails requiredDetails { get; set; }
+
+
+    protected override void OnParametersSet()
+    {
+        UpdateTransactionProperties();
+        UpdateDebtProperties();
+        StateHasChanged(); 
+    }
+
+
+    public void ToggleDateRangePicker()
+    {
+        IsDateRangePickerVisible = !IsDateRangePickerVisible;
+    }
+
+    public async Task ApplyDateRange()
+    {
+        if (FromDate == null || ToDate == null)
+        {
+            await JS.InvokeVoidAsync("showAlert", "Please select both From and To dates.");
+            return;
+        }
+
+        if (FromDate > ToDate)
+        {
+            await JS.InvokeVoidAsync("showAlert", "From date cannot be later than To date.");
+            return;
+        }
+
+        await JS.InvokeVoidAsync("console.log", $"Date range applied: {FromDate.Value.ToShortDateString()} to {ToDate.Value.ToShortDateString()}");
+        await JS.InvokeVoidAsync("showAlert", $"Date range applied: {FromDate.Value.ToShortDateString()} to {ToDate.Value.ToShortDateString()}");
+
+        ToggleDateRangePicker();
+    }
+
+    public bool UpdateDictionaryValue(
+      List<Dictionary<string, string>> listOfDictionaries,
+      string keyToFind,
+      string valueToMatch,
+      string keyToUpdate,
+      string newValue)
+    {
+        try{
+            foreach (var dictionary in listOfDictionaries)
+            {
+                if (dictionary.ContainsKey(keyToFind) && dictionary[keyToFind] == valueToMatch)
+                {
+                    if (dictionary.ContainsKey(keyToUpdate))
+                    {
+                        dictionary[keyToUpdate] = newValue;
+                        return true;                 
+                    }
+                }
+            }
+            return false;
+        }catch(Exception obj)
+        {
+            return false;
+        }
+    }
+
+    public async Task Logout()
+    {
+        try
+        {
+
+            bool update_last_currency_type_value = UpdateDictionaryValue(requiredDetails.FirstLoginCurrencyType, "user_username", 
+            requiredDetails.CurrentUserUsername, "firstlogin_currency_type",requiredDetails.CurrencyTypeUser);
+            if(update_last_currency_type_value==true)
+            {
+                requiredDetails.CurrencyTypeUser = "";
+                requiredDetails.CurrentUserUsername = "";
+                await JS.InvokeVoidAsync("console.log", "Logout success");
+                await JS.InvokeVoidAsync("showAlert", "Logout success.");
+                Navigation.NavigateTo("/");
+            }
+            else
+            {
+                await JS.InvokeVoidAsync("console.log", "Update currency type value fail.");
+                await JS.InvokeVoidAsync("showAlert", "Logout failed.");
+            }
+
+        }
+        catch (Exception)
+        {
+            await JS.InvokeVoidAsync("console.log", "Exception caught in logout method.");
+            await JS.InvokeVoidAsync("showAlert", "Logout failed.");
+        }
+    }
+
+    // Method to get the UserDebtBalance for a specific user by username
+    public float GetUserDebtBalance()
+    {
+        try
+        {
+            var user = requiredDetails.user_info_list.FirstOrDefault(u => u.Username == requiredDetails.CurrentUserUsername);
+            if (user != null)
+            {
+                return user.UserDebtBalance;
+            }
+            else
+            {
+                return 0.0f;
+            }
+        }
+        catch (Exception ex)
+        {
+            return 0.0f;
+        }
+    }
+
+    // Method to get the UserAvailableBalance for a specific user by username
+    public float GetUserAvailableBalance()
+    {
+        try
+        {
+            var user = requiredDetails.user_info_list.FirstOrDefault(u => u.Username == requiredDetails.CurrentUserUsername);
+            if (user != null)
+            {
+                return user.UserAvailableBalance;
+            }
+            else
+            {
+                return 0.0f;
+            }
+        }
+        catch (Exception ex)
+        {
+            return 0.0f;
+        }
+    }
+
+    [JSInvokable]
+    public async Task CancelTransaction()
+    {
+        await JS.InvokeVoidAsync("showAlert", "Transaction canceled.");
+    }
+
+    [JSInvokable]
+    public async Task ProceedWithDebt()
+    {
+        try
+        {
+            var user_data = requiredDetails.user_info_list
+                     .FirstOrDefault(user => user.Username == requiredDetails.CurrentUserUsername);
+
+            if (user_data != null)
+            {
+                float amount_insufficient = TransactionsAmount - user_data.UserAvailableBalance;
+
+                DebtModel debtModel = new DebtModel(
+                         DebtId: Guid.NewGuid().ToString(),
+                         TransactionType: "Debt",
+                         DebtTitle: TransactionsTittle,
+                         DebtDate: TransactionsDate,
+                         DebtSource: TransactionsSource,
+                         DebtAmount: amount_insufficient,
+                         TransactionFlow: "In",
+                         DebtStatus: "to pay",
+                         TransactionStatus: TransactionsType,
+                         Username: requiredDetails.CurrentUserUsername,
+                         debtNote: TransactionsNote
+                          );
+
+
+                TransactionsModel transaction1 = new TransactionsModel(
+                   trId: Guid.NewGuid().ToString(),
+                   trType: "Debt",
+                   trTitle: TransactionsTittle,
+                   trFlow: "In",
+                   trDate: TransactionsDate,
+                   trSource: TransactionsSource,
+                   trNote: TransactionsNote,
+                   trAmount: amount_insufficient,
+                   userUsername: requiredDetails.CurrentUserUsername
+                   );
+
+                user_data.UserAvailableBalance = user_data.UserAvailableBalance + amount_insufficient;  //sufficient amount
+
+
+                TransactionsModel transaction2 = new TransactionsModel(
+                   trId: Guid.NewGuid().ToString(),
+                   trType: TransactionsType,
+                   trTitle: TransactionsTittle,
+                   trFlow: TransactionsFlow,
+                   trDate: TransactionsDate,
+                   trSource: TransactionsSource,
+                   trNote: TransactionsNote,
+                   trAmount: user_data.UserAvailableBalance,
+                   userUsername: requiredDetails.CurrentUserUsername
+                   );
+
+                user_data.UserAvailableBalance = 0.0F;
+                user_data.UserDebtBalance = amount_insufficient;
+
+                requiredDetails.debt_info_list.Add(debtModel);
+                requiredDetails.transactions_info_list.Add(transaction1);
+                requiredDetails.transactions_info_list.Add(transaction2);
+                await JS.InvokeVoidAsync("console.log", "transaction ssuccess");
+                UpdateTransactionProperties();
+                UpdateDebtProperties();
+                StateHasChanged();
+                await JS.InvokeVoidAsync("showAlert", "Transactions success.");
+                return;
+            }
+            UpdateTransactionProperties();
+            UpdateDebtProperties();
+            StateHasChanged();
+            return;
+        }
+        catch (Exception ex)
+        {
+            await JS.InvokeVoidAsync("console.log", "exception caught in proceed with debt.");
+            await JS.InvokeVoidAsync("showAlert", "Transactions cancel.");
+        }
+    }
+
+    public async Task DoTransactions()
+    {
+        try
+        {
+            if 
+            (
+               string.IsNullOrEmpty(TransactionsFlow) ||
+               string.IsNullOrEmpty(TransactionsType) ||
+               // TransactionsDate == default(DateTime) ||
+               TransactionsAmount == 0.0f ||
+               string.IsNullOrEmpty(TransactionsSource) ||
+               string.IsNullOrEmpty(TransactionsNote) ||
+               string.IsNullOrEmpty(TransactionsTittle) 
+            // string.IsNullOrEmpty(TransactionsId)
+            )
+            {
+                await JS.InvokeVoidAsync("console.log", "transactions type not select");
+                await JS.InvokeVoidAsync("showAlert", "Transactions type not select.Transaction fail.");
+                return;
+            }
+
+            await JS.InvokeVoidAsync("console.log", "transactions type value");
+            await JS.InvokeVoidAsync("console.log", $"{TransactionsType}");
+
+
+
+            if (TransactionsType=="Credit")
+            {
+
+                var debt_data = requiredDetails.debt_info_list.FirstOrDefault(x => x.DebtStatus == "to pay");
+                if (debt_data != null)
+                {
+                    var debt_data_to_pay = requiredDetails.debt_info_list
+                                 .Where(debt => debt.DebtStatus == "to pay")
+                                 .ToList();
+                    float initial_debt_amount_to_pay = 0.0f;
+                    foreach (var debt in debt_data_to_pay)
+                    {
+                        initial_debt_amount_to_pay += (float)debt.DebtAmount;
+                    }
+
+                    if(TransactionsAmount == initial_debt_amount_to_pay) //the tr amount == debt amount to pay
+                    {
+                        DebtModel debtModel = new DebtModel(
+                           DebtId: Guid.NewGuid().ToString(),
+                           TransactionType: "Debt",
+                           DebtTitle: TransactionsTittle,
+                           DebtDate: TransactionsDate,
+                           DebtSource: TransactionsSource,
+                           DebtAmount: initial_debt_amount_to_pay,
+                           TransactionFlow: "Out",
+                           DebtStatus: "paid",
+                           TransactionStatus: "Credit",
+                           Username: requiredDetails.CurrentUserUsername,
+                           debtNote: TransactionsNote
+                            );
+
+                        foreach (var debt in debt_data_to_pay)  //after clearing debt the to pay must change to paid
+                        {
+                            debt.DebtStatus = "paid";
+                        }
+
+                        TransactionsModel transaction = new TransactionsModel(
+                  trId: Guid.NewGuid().ToString(),
+                  trType: "Debt",
+                  trTitle: TransactionsTittle,
+                  trFlow: "Out",
+                  trDate: TransactionsDate,
+                  trSource: TransactionsSource,
+                  trNote: TransactionsNote,
+                  trAmount: TransactionsAmount,
+                  userUsername: requiredDetails.CurrentUserUsername
+                  );
+
+                        requiredDetails.debt_info_list.Add(debtModel);
+                        requiredDetails.transactions_info_list.Add(transaction);
+
+                        var user_data = requiredDetails.user_info_list.FirstOrDefault(x => x.Username == requiredDetails.CurrentUserUsername);
+                        user_data.UserDebtBalance = 0.0f;
+                        user_data.UserAvailableBalance = 0.0f;
+
+                        await JS.InvokeVoidAsync("console.log", "Transactions success");
+                        await JS.InvokeVoidAsync("console.log", $"{debtModel.DebtId}");
+                        UpdateTransactionProperties();
+                        UpdateDebtProperties();
+                        StateHasChanged();
+                        await JS.InvokeVoidAsync("showAlert", "Transactions success");
+                        return;
+                    }
+
+                    if (TransactionsAmount > initial_debt_amount_to_pay)  //tr mount is greater then debt amount to pay
+                    {
+                        float reamin_amount = TransactionsAmount - initial_debt_amount_to_pay;
+
+                        DebtModel debtModel = new DebtModel(
+                                  DebtId: Guid.NewGuid().ToString(),
+                                  TransactionType: "Debt",
+                                  DebtTitle: TransactionsTittle,
+                                  DebtDate: TransactionsDate,
+                                  DebtSource: TransactionsSource,
+                                  DebtAmount: initial_debt_amount_to_pay,
+                                  TransactionFlow: "Out",
+                                  DebtStatus: "paid",
+                                  TransactionStatus: "Credit",
+                                  Username: requiredDetails.CurrentUserUsername,
+                                  debtNote: TransactionsNote
+                                     );
+
+                        foreach (var debt in debt_data_to_pay)  //after clearing debt the to pay must change to paid
+                        {
+                            debt.DebtStatus = "paid";
+                        }
+
+                        TransactionsModel transaction1 = new TransactionsModel(
+                           trId: Guid.NewGuid().ToString(),
+                           trType: "Debt",
+                           trTitle: TransactionsTittle,
+                           trFlow: "Out",
+                           trDate: TransactionsDate,
+                           trSource: TransactionsSource,
+                           trNote: TransactionsNote,
+                           trAmount: initial_debt_amount_to_pay,
+                           userUsername: requiredDetails.CurrentUserUsername
+                           );
+
+                        TransactionsModel transaction2 = new TransactionsModel(
+                        trId: Guid.NewGuid().ToString(),
+                        trType: TransactionsType,
+                        trTitle: TransactionsTittle,
+                        trFlow: "In",
+                        trDate: TransactionsDate,
+                        trSource: TransactionsSource,
+                        trNote: TransactionsNote,
+                        trAmount: reamin_amount,
+                        userUsername: requiredDetails.CurrentUserUsername
+                        );
+
+                        requiredDetails.debt_info_list.Add(debtModel);
+                        requiredDetails.transactions_info_list.Add(transaction1);
+                        requiredDetails.transactions_info_list.Add(transaction2);
+
+                        var user_data = requiredDetails.user_info_list.FirstOrDefault(x => x.Username == requiredDetails.CurrentUserUsername);
+                        user_data.UserDebtBalance = 0.0f;
+                        user_data.UserAvailableBalance =user_data.UserAvailableBalance + reamin_amount ;
+
+                        await JS.InvokeVoidAsync("console.log", "Transactions success");
+                        await JS.InvokeVoidAsync("console.log", $"{debtModel.DebtId}");
+                        UpdateTransactionProperties();
+                        UpdateDebtProperties();
+                        StateHasChanged();
+                        await JS.InvokeVoidAsync("showAlert", "Transactions success");
+                        return;
+
+
+
+
+                    }
+
+                    if (TransactionsAmount < initial_debt_amount_to_pay)
+                    {
+                        var user_data = requiredDetails.user_info_list.FirstOrDefault(x => x.Username == requiredDetails.CurrentUserUsername);
+                        float total_available_amount_use_to_pay = user_data.UserAvailableBalance + TransactionsAmount;
+
+                        if (initial_debt_amount_to_pay < total_available_amount_use_to_pay)
+                        {
+
+                            DebtModel debtModel = new DebtModel(
+                                    DebtId: Guid.NewGuid().ToString(),
+                                    TransactionType: "Debt",
+                                    DebtTitle: TransactionsTittle,
+                                    DebtDate: TransactionsDate,
+                                    DebtSource: TransactionsSource,
+                                    DebtAmount: initial_debt_amount_to_pay,
+                                    TransactionFlow: "Out",
+                                    DebtStatus: "paid",
+                                    TransactionStatus: "Credit",
+                                    Username: requiredDetails.CurrentUserUsername,
+                                    debtNote: TransactionsNote
+                                       );
+
+                            foreach (var debt in debt_data_to_pay)  //after clearing debt the to pay must change to paid
+                            {
+                                debt.DebtStatus = "paid";
+                            }
+
+                            TransactionsModel transaction = new TransactionsModel(
+                            trId: Guid.NewGuid().ToString(),
+                            trType: "Debt",
+                            trTitle: TransactionsTittle,
+                            trFlow: "Out",
+                            trDate: TransactionsDate,
+                            trSource: TransactionsSource,
+                            trNote: TransactionsNote,
+                            trAmount: initial_debt_amount_to_pay,
+                            userUsername: requiredDetails.CurrentUserUsername
+                            );
+
+                            requiredDetails.transactions_info_list.Add(transaction);
+                            requiredDetails.debt_info_list.Add(debtModel);
+
+                            float new_current_user_balance = total_available_amount_use_to_pay - initial_debt_amount_to_pay;
+                            var user_data_value = requiredDetails.user_info_list.FirstOrDefault(x => x.Username == requiredDetails.CurrentUserUsername);
+                            user_data_value.UserAvailableBalance = new_current_user_balance;
+                            user_data_value.UserDebtBalance = 0.0f;
+                            await JS.InvokeVoidAsync("console.log", "Transactions success");
+                            await JS.InvokeVoidAsync("console.log", $"{debtModel.DebtId}");
+                            UpdateTransactionProperties();
+                            UpdateDebtProperties();
+                            StateHasChanged();
+                            await JS.InvokeVoidAsync("showAlert", "Transactions success");
+                            return;
+                        }
+
+                        if (initial_debt_amount_to_pay == total_available_amount_use_to_pay)
+                        {
+                            DebtModel debtModel = new DebtModel(
+                            DebtId: Guid.NewGuid().ToString(),
+                            TransactionType: "Debt",
+                            DebtTitle: TransactionsTittle,
+                            DebtDate: TransactionsDate,
+                            DebtSource: TransactionsSource,
+                            DebtAmount: initial_debt_amount_to_pay,
+                            TransactionFlow: "Out",
+                            DebtStatus: "paid",
+                            TransactionStatus: "Credit",
+                            Username: requiredDetails.CurrentUserUsername,
+                            debtNote: TransactionsNote
+                             );
+
+                            foreach (var debt in debt_data_to_pay)  //after clearing debt the to pay must change to paid
+                            {
+                                debt.DebtStatus = "paid";
+                            }
+
+                            TransactionsModel transaction = new TransactionsModel(
+                       trId: Guid.NewGuid().ToString(),
+                       trType: "Debt",
+                       trTitle: TransactionsTittle,
+                       trFlow: "Out",
+                       trDate: TransactionsDate,
+                       trSource: TransactionsSource,
+                       trNote: TransactionsNote,
+                       trAmount: initial_debt_amount_to_pay,
+                       userUsername: requiredDetails.CurrentUserUsername
+                       );
+
+                            requiredDetails.debt_info_list.Add(debtModel);
+                            requiredDetails.transactions_info_list.Add(transaction);
+
+                            var user_data_value = requiredDetails.user_info_list.FirstOrDefault(x => x.Username == requiredDetails.CurrentUserUsername);
+                            user_data_value.UserDebtBalance = 0.0f;
+                            user_data_value.UserAvailableBalance = 0.0f;
+
+                            await JS.InvokeVoidAsync("console.log", "Transactions success");
+                            await JS.InvokeVoidAsync("console.log", $"{debtModel.DebtId}");
+                            UpdateTransactionProperties();
+                            UpdateDebtProperties();
+                            StateHasChanged();
+                            await JS.InvokeVoidAsync("showAlert", "Transactions success");
+
+                        }
+
+                        if (initial_debt_amount_to_pay > total_available_amount_use_to_pay)
+                        {
+                            string guid = Guid.NewGuid().ToString();
+                            TransactionsModel transactionsModel = new TransactionsModel
+                                      (
+                                    trId: guid,
+                                    trType: TransactionsType,
+                                    trTitle: TransactionsTittle,
+                                    trFlow: TransactionsFlow,
+                                    trDate: TransactionsDate,
+                                    trSource: TransactionsSource,
+                                    trNote: TransactionsNote,
+                                    trAmount: TransactionsAmount,
+                                    userUsername: requiredDetails.CurrentUserUsername
+                                );
+                            requiredDetails.transactions_info_list.Add(transactionsModel);
+                            float new_available_balance = user_data.UserAvailableBalance + TransactionsAmount;
+                            user_data.UserAvailableBalance = new_available_balance;
+                            await JS.InvokeVoidAsync("console.log", "Transactions success");
+                            await JS.InvokeVoidAsync("console.log", $"{transactionsModel.TrId}");
+                            UpdateTransactionProperties();
+                            UpdateDebtProperties();
+                            StateHasChanged();
+                            await JS.InvokeVoidAsync("showAlert", "Transactions success");
+                        }
+
+                    }
+
+                } //to pay not present
+                else
+                {
+                    string guid = Guid.NewGuid().ToString();
+                    TransactionsModel transactionsModel = new TransactionsModel
+                              (
+                            trId: guid,
+                            trType: TransactionsType,
+                            trTitle: TransactionsTittle,
+                            trFlow: TransactionsFlow,
+                            trDate: TransactionsDate,
+                            trSource: TransactionsSource,
+                            trNote: TransactionsNote,
+                            trAmount: TransactionsAmount,
+                            userUsername: requiredDetails.CurrentUserUsername
+                        );
+                    requiredDetails.transactions_info_list.Add(transactionsModel);
+                    var user_data = requiredDetails.user_info_list.FirstOrDefault(x => x.Username == requiredDetails.CurrentUserUsername);
+                    float new_available_balance = user_data.UserAvailableBalance + TransactionsAmount;
+                    user_data.UserAvailableBalance = new_available_balance;
+                    await JS.InvokeVoidAsync("console.log", "Transactions success");
+                    await JS.InvokeVoidAsync("console.log", $"{transactionsModel.TrId}");
+                    UpdateTransactionProperties();
+                    UpdateDebtProperties();
+                    StateHasChanged();
+                    await JS.InvokeVoidAsync("showAlert", "Transactions success");
+
+                }
+
+            } //transaction type credit
+
+            if (TransactionsType=="Debit")
+            {
+                var user_data = requiredDetails.user_info_list.FirstOrDefault(x => x.Username == requiredDetails.CurrentUserUsername);
+
+                if(TransactionsAmount < user_data.UserAvailableBalance)
+                {
+                    string guid = Guid.NewGuid().ToString();
+                    TransactionsModel transactionsModel = new TransactionsModel
+                              (
+                            trId: guid,
+                            trType: TransactionsType,
+                            trTitle: TransactionsTittle,
+                            trFlow: TransactionsFlow,
+                            trDate: TransactionsDate,
+                            trSource: TransactionsSource,
+                            trNote: TransactionsNote,
+                            trAmount: TransactionsAmount,
+                            userUsername: requiredDetails.CurrentUserUsername
+                        );
+                    requiredDetails.transactions_info_list.Add(transactionsModel);
+                    var user_data_value = requiredDetails.user_info_list.FirstOrDefault(x => x.Username == requiredDetails.CurrentUserUsername);
+                    float new_available_balance = user_data_value.UserAvailableBalance - TransactionsAmount;
+                    user_data_value.UserAvailableBalance = new_available_balance;
+                    await JS.InvokeVoidAsync("console.log", "Transactions success");
+                    await JS.InvokeVoidAsync("console.log", $"{transactionsModel.TrId}");
+                    UpdateTransactionProperties();
+                    UpdateDebtProperties();
+                    StateHasChanged();
+                    await JS.InvokeVoidAsync("showAlert", "Transactions success");
+                    return;
+                }
+                if (TransactionsAmount > user_data.UserAvailableBalance)
+                {
+                    try
+                    {
+                        float amount_insufficient = TransactionsAmount - user_data.UserAvailableBalance;
+                        // Show an alert with options
+                        await JS.InvokeVoidAsync("showConfirm",
+                            $"Insufficient funds! Shortage: {amount_insufficient}. Do you want to proceed with debt?",
+                            DotNetObjectReference.Create(this)); // Pass the current object for callback
+                        // StateHasChanged();
+                        // JavaScript method 'showConfirm' should call either CancelTransaction or ProceedWithDebt
+                    }catch(Exception obj)
+                    {
+                        await JS.InvokeVoidAsync("console.log", "exception caught.");
+                        await JS.InvokeVoidAsync("console.log", "Trnsactions fail.");
+                        await JS.InvokeVoidAsync("showAlert", "Transactions fail");
+                        return;
+                    }
+
+
+                }
+
+            }
+            StateHasChanged();
+        }
+        catch (Exception obj) 
+        {
+            await JS.InvokeVoidAsync("console.log", "exception caught");
+            await JS.InvokeVoidAsync("console.log", $"{obj.ToString()}");
+            await JS.InvokeVoidAsync("showAlert", "Transactions fail");
+
+        }
+
+    }
+
+    public void UpdateTransactionProperties()
+    {
+        try
+        {
+            // Ensure the transactions list is not null
+            var userTransactions = requiredDetails.transactions_info_list?
+                .Where(t => t.UserUsername == requiredDetails.CurrentUserUsername);
+
+            if (userTransactions == null || !userTransactions.Any())
+            {
+                // If null or empty, reset all properties to default values
+                HighestInflowTransaction = 0.0f;
+                LowestInflowTransaction = 0.0f;
+                HighestOutflowTransaction = 0.0f;
+                LowestOutflowTransaction = 0.0f;
+                TotalInflow = 0.0f;
+                TotalOutflow = 0.0f;
+                StateHasChanged();
+                return;
+            }
+
+            // Calculate highest inflow
+            HighestInflowTransaction = userTransactions
+                .Where(t => t.TrFlow.ToLower() == "in")
+                .OrderByDescending(t => t.TrAmount)
+                .FirstOrDefault()?.TrAmount ?? 0.0f;
+
+            // Calculate lowest inflow
+            LowestInflowTransaction = userTransactions
+                .Where(t => t.TrFlow.ToLower() == "in")
+                .OrderBy(t => t.TrAmount)
+                .FirstOrDefault()?.TrAmount ?? 0.0f;
+
+            // Calculate highest outflow
+            HighestOutflowTransaction = userTransactions
+                .Where(t => t.TrFlow.ToLower() == "out")
+                .OrderByDescending(t => t.TrAmount)
+                .FirstOrDefault()?.TrAmount ?? 0.0f;
+
+            // Calculate lowest outflow
+            LowestOutflowTransaction = userTransactions
+                .Where(t => t.TrFlow.ToLower() == "out")
+                .OrderBy(t => t.TrAmount)
+                .FirstOrDefault()?.TrAmount ?? 0.0f;
+
+            // Calculate total inflow
+            TotalInflow = userTransactions
+                .Where(t => t.TrFlow.ToLower() == "in")
+                .Sum(t => t.TrAmount);
+
+            // Calculate total outflow
+            TotalOutflow = userTransactions
+                .Where(t => t.TrFlow.ToLower() == "out")
+                .Sum(t => t.TrAmount);
+            StateHasChanged();
+            return;
+        }
+        catch (Exception ex)
+        {
+            // Log exception if needed (e.g., Console.WriteLine or logging framework)
+            // Reset to default values in case of error
+            HighestInflowTransaction = 0.0f;
+            LowestInflowTransaction = 0.0f;
+            HighestOutflowTransaction = 0.0f;
+            LowestOutflowTransaction = 0.0f;
+            TotalInflow = 0.0f;
+            TotalOutflow = 0.0f;
+            StateHasChanged();
+            return;
+        }
+    }
+
+    private void UpdateDebtProperties()
+    {
+        try
+        {
+            // Ensure the debts list is not null
+            var userDebts = requiredDetails.debt_info_list?
+                .Where(d => d.Username == requiredDetails.CurrentUserUsername);
+
+            if (userDebts == null || !userDebts.Any())
+            {
+                // If null or empty, reset all properties to default values
+                HighestDebt = 0.0f;
+                LowestDebt = 0.0f;
+                StateHasChanged();
+                return;
+            }
+
+            // Calculate highest debt
+            HighestDebt = userDebts
+                .OrderByDescending(d => d.DebtAmount)
+                .FirstOrDefault()?.DebtAmount ?? 0.0f;
+
+            // Calculate lowest debt
+            LowestDebt = userDebts
+                .OrderBy(d => d.DebtAmount)
+                .FirstOrDefault()?.DebtAmount ?? 0.0f;
+            StateHasChanged();
+            return;
+        }
+        catch (Exception ex)
+        {
+            // Log exception if needed (e.g., Console.WriteLine or logging framework)
+            // Reset to default values in case of error
+            HighestDebt = 0.0f;
+            LowestDebt = 0.0f;
+            StateHasChanged();
+            return;
+        }
+    }
+
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TransactionsMate")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+cbce9bcbedeea82859c8eb09497a957127a45cfe")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+83095cdf309b33c1adf638113b562e067b7e903b")]
 [assembly: System.Reflection.AssemblyProductAttribute("TransactionsMate")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TransactionsMate")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

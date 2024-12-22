@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using static TransactionsMate.Components.Layout.MainLayout;
 
 namespace TransactionsMate
 {
@@ -15,9 +16,10 @@ namespace TransactionsMate
                 });
 
             builder.Services.AddMauiBlazorWebView();
+        
 
 #if DEBUG
-    		builder.Services.AddBlazorWebViewDeveloperTools();
+            builder.Services.AddBlazorWebViewDeveloperTools();
     		builder.Logging.AddDebug();
 #endif
 
