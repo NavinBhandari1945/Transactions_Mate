@@ -205,3 +205,8 @@ D:\College Workplace\3rdyr\sem1\app development\cw\desktop app\TransactionsMate\
 D:\College Workplace\3rdyr\sem1\app development\cw\desktop app\TransactionsMate\TransactionsMate\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
 D:\College Workplace\3rdyr\sem1\app development\cw\desktop app\TransactionsMate\TransactionsMate\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\ProjectArchitectures.txt
 D:\College Workplace\3rdyr\sem1\app development\cw\desktop app\TransactionsMate\TransactionsMate\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\TransactionsMate.sourcelink.json
+D:\College Workplace\3rdyr\sem1\app development\cw\desktop app\TransactionsMate\TransactionsMate\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\TransactionsMate.staticwebassets.endpoints.json
+D:\College Workplace\3rdyr\sem1\app development\cw\desktop app\TransactionsMate\TransactionsMate\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\staticwebassets.build.endpoints.json
+D:\College Workplace\3rdyr\sem1\app development\cw\desktop app\TransactionsMate\TransactionsMate\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\staticwebassets\msbuild.TransactionsMate.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+D:\College Workplace\3rdyr\sem1\app development\cw\desktop app\TransactionsMate\TransactionsMate\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\staticwebassets.upToDateCheck.txt
+D:\College Workplace\3rdyr\sem1\app development\cw\desktop app\TransactionsMate\TransactionsMate\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\staticwebassets.publish.endpoints.json
