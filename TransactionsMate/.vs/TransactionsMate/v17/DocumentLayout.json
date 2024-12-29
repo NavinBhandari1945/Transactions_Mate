@@ -3,6 +3,22 @@
   "WorkspaceRootPath": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|d:\\college workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\transactionsmate\\transactionsmate\\components\\pages\\login.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|solutionrelative:transactionsmate\\components\\pages\\login.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|d:\\college workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\transactionsmate\\transactionsmate\\components\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|solutionrelative:transactionsmate\\components\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|d:\\college workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\transactionsmate\\transactionsmate\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|solutionrelative:transactionsmate\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|d:\\college workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\transactionsmate\\transactionsmate\\components\\pages\\user_home.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|solutionrelative:transactionsmate\\components\\pages\\user_home.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|d:\\college workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\transactionsmate\\transactionsmate\\components\\pages\\signinpage.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|solutionrelative:transactionsmate\\components\\pages\\signinpage.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,24 +27,12 @@
       "RelativeMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|solutionrelative:transactionsmate\\components\\pages\\signinpage.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|d:\\college workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\transactionsmate\\transactionsmate\\components\\pages\\login.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|solutionrelative:transactionsmate\\components\\pages\\login.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|d:\\college workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\transactionsmate\\transactionsmate\\components\\pages\\user_home.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|solutionrelative:transactionsmate\\components\\pages\\user_home.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|d:\\college workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\transactionsmate\\transactionsmate\\components\\pages\\admin_home.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|solutionrelative:transactionsmate\\components\\pages\\admin_home.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|d:\\college workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\transactionsmate\\transactionsmate\\components\\pages\\admin_home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|solutionrelative:transactionsmate\\components\\pages\\admin_home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|d:\\college workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\transactionsmate\\transactionsmate\\components\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|solutionrelative:transactionsmate\\components\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|d:\\college workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\transactionsmate\\transactionsmate\\components\\pages\\user_home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -42,11 +46,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 2,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "TransactionsMate\\Components\\Layout\\MainLayout.razor",
+              "ToolTip": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "TransactionsMate\\Components\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-29T03:50:49.53Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Login.razor",
               "DocumentMoniker": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Pages\\Login.razor",
               "RelativeDocumentMoniker": "TransactionsMate\\Components\\Pages\\Login.razor",
@@ -59,20 +76,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Login.razor.cs",
               "DocumentMoniker": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Pages\\Login.razor.cs",
               "RelativeDocumentMoniker": "TransactionsMate\\Components\\Pages\\Login.razor.cs",
               "ToolTip": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Pages\\Login.razor.cs",
               "RelativeToolTip": "TransactionsMate\\Components\\Pages\\Login.razor.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAowFwAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-29T03:36:01.261Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "User_Home.razor",
               "DocumentMoniker": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Pages\\User_Home.razor",
               "RelativeDocumentMoniker": "TransactionsMate\\Components\\Pages\\User_Home.razor",
@@ -80,8 +97,7 @@
               "RelativeToolTip": "TransactionsMate\\Components\\Pages\\User_Home.razor",
               "ViewState": "AgIAAJUEAAAAAAAAAAAAAKcEAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-29T03:34:16.832Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-29T03:34:16.832Z"
             },
             {
               "$type": "Document",
@@ -91,14 +107,14 @@
               "RelativeDocumentMoniker": "TransactionsMate\\Components\\Pages\\User_Home.razor.cs",
               "ToolTip": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Pages\\User_Home.razor.cs",
               "RelativeToolTip": "TransactionsMate\\Components\\Pages\\User_Home.razor.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAxAAAAAAAAAA==",
+              "ViewState": "AgIAAIsBAAAAAAAAAAAkwAQCAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-29T03:34:31.138Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "SigninPage.razor.cs",
               "DocumentMoniker": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Pages\\SigninPage.razor.cs",
               "RelativeDocumentMoniker": "TransactionsMate\\Components\\Pages\\SigninPage.razor.cs",
@@ -111,7 +127,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "SigninPage.razor",
               "DocumentMoniker": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Pages\\SigninPage.razor",
               "RelativeDocumentMoniker": "TransactionsMate\\Components\\Pages\\SigninPage.razor",
@@ -119,12 +135,11 @@
               "RelativeToolTip": "TransactionsMate\\Components\\Pages\\SigninPage.razor",
               "ViewState": "AgIAACMAAAAAAAAAAAAAAC8AAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-29T03:33:59.703Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-29T03:33:59.703Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Admin_Home.razor.cs",
               "DocumentMoniker": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Pages\\Admin_Home.razor.cs",
               "RelativeDocumentMoniker": "TransactionsMate\\Components\\Pages\\Admin_Home.razor.cs",
@@ -132,12 +147,11 @@
               "RelativeToolTip": "TransactionsMate\\Components\\Pages\\Admin_Home.razor.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-29T03:33:44.267Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-29T03:33:44.267Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "Admin_Home.razor",
               "DocumentMoniker": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Pages\\Admin_Home.razor",
               "RelativeDocumentMoniker": "TransactionsMate\\Components\\Pages\\Admin_Home.razor",
@@ -145,8 +159,7 @@
               "RelativeToolTip": "TransactionsMate\\Components\\Pages\\Admin_Home.razor",
               "ViewState": "AgIAAAIAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-29T03:33:23.454Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-29T03:33:23.454Z"
             }
           ]
         }

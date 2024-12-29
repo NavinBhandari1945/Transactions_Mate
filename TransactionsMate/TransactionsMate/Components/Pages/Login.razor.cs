@@ -11,8 +11,6 @@ namespace TransactionsMate.Components.Pages
 {
     public partial class Login:ComponentBase
     {
-
-
         public string username { get; set; } = "";
         public string password { get; set; } = "";
         public string currencyType { get; set; } = "";

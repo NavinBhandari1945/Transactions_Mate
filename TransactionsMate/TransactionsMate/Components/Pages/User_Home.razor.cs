@@ -502,7 +502,21 @@ namespace TransactionsMate.Components.Pages
                 await JS.InvokeVoidAsync("console.log", "transactions type value");
                 await JS.InvokeVoidAsync("console.log", $"{TransactionsType}");
 
+                if(TransactionsFlow=="In" && TransactionsType=="Debit")
+                {
+                    await JS.InvokeVoidAsync("console.log", "Trransactions type can not be debit when flow is In.");
+                    await JS.InvokeVoidAsync("showAlert", "Trransactions type can not be debit when flow is In.");
+                    return;
 
+                }
+
+                if (TransactionsFlow == "Out" && TransactionsType == "Credit")
+                {
+                    await JS.InvokeVoidAsync("console.log", "Trransactions type can not be Credit when flow is Out.");
+                    await JS.InvokeVoidAsync("showAlert", "Trransactions type can not be Credit when flow is Out.");
+                    return;
+
+                }
 
                 if (TransactionsType == "Credit")
                 {
