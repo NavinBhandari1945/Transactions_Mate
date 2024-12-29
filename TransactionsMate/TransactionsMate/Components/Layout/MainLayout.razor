@@ -18,7 +18,7 @@
     // RequiredDetails class with four properties
     public class RequiredDetails
     {
-        public List<UserInfMoodel> user_info_list { get; set; }
+        public List<UserInfoMoodel> user_info_list { get; set; }
         public List<TransactionsModel> transactions_info_list { get; set; }
         public List<DebtModel> debt_info_list { get; set; }
         public string CurrencyTypeUser { get; set; }
@@ -30,11 +30,11 @@
     // Instance of RequiredDetails to be shared with child components
     public RequiredDetails requiredDetails = new RequiredDetails()
         {
-            user_info_list = new List<UserInfMoodel>()
+            user_info_list = new List<UserInfoMoodel>()
             {
-                new UserInfMoodel(user_AvailableBalance:0.0f,user_DebtBalance:0.0f,user_firstName:"Admin",user_lastName:"Admin",
+                new UserInfoMoodel(user_AvailableBalance:0.0f,user_DebtBalance:0.0f,user_firstName:"Admin",user_lastName:"Admin",
                 user_type:"admin",user_username:"admin",user_userPassword:"admin"),//default user for test
-                new UserInfMoodel(user_AvailableBalance:0.0f,user_DebtBalance:0.0f,user_firstName:"user",user_lastName:"user",
+                new UserInfoMoodel(user_AvailableBalance:0.0f,user_DebtBalance:0.0f,user_firstName:"user",user_lastName:"user",
                 user_type:"user",user_username:"user",user_userPassword:"user"),//default user for test
             },
             transactions_info_list = new List<TransactionsModel>(),  

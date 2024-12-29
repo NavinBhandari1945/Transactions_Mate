@@ -235,10 +235,10 @@
     <AppxPackagedFile Include="C:\Users\LENOVO\.nuget\packages\microsoft.windows.sdk.net.ref\10.0.19041.54\lib\net8.0\WinRT.Runtime.dll">
       <PackagePath>WinRT.Runtime.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\LENOVO\.nuget\packages\microsoft.aspnetcore.authorization\8.0.10\lib\net8.0\Microsoft.AspNetCore.Authorization.dll">
+    <AppxPackagedFile Include="C:\Users\LENOVO\.nuget\packages\microsoft.aspnetcore.authorization\8.0.11\lib\net8.0\Microsoft.AspNetCore.Authorization.dll">
       <PackagePath>Microsoft.AspNetCore.Authorization.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\LENOVO\.nuget\packages\microsoft.aspnetcore.components\8.0.10\lib\net8.0\Microsoft.AspNetCore.Components.dll">
+    <AppxPackagedFile Include="C:\Users\LENOVO\.nuget\packages\microsoft.aspnetcore.components\8.0.11\lib\net8.0\Microsoft.AspNetCore.Components.dll">
       <PackagePath>Microsoft.AspNetCore.Components.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\LENOVO\.nuget\packages\microsoft.aspnetcore.components.forms\8.0.10\lib\net8.0\Microsoft.AspNetCore.Components.Forms.dll">
@@ -253,7 +253,7 @@
     <AppxPackagedFile Include="C:\Users\LENOVO\.nuget\packages\microsoft.aspnetcore.components.webview.maui\8.0.83\lib\net8.0-windows10.0.19041\Microsoft.AspNetCore.Components.WebView.Maui.dll">
       <PackagePath>Microsoft.AspNetCore.Components.WebView.Maui.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\LENOVO\.nuget\packages\microsoft.aspnetcore.metadata\8.0.10\lib\net8.0\Microsoft.AspNetCore.Metadata.dll">
+    <AppxPackagedFile Include="C:\Users\LENOVO\.nuget\packages\microsoft.aspnetcore.metadata\8.0.11\lib\net8.0\Microsoft.AspNetCore.Metadata.dll">
       <PackagePath>Microsoft.AspNetCore.Metadata.dll</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\LENOVO\.nuget\packages\microsoft.extensions.configuration\8.0.0\lib\net8.0\Microsoft.Extensions.Configuration.dll">

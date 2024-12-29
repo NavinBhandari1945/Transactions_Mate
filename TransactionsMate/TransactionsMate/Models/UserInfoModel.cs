@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace TransactionsMate.Models
 {
-    public class UserInfMoodel
+    public class UserInfoMoodel
     {
-        public UserInfMoodel(
+        public UserInfoMoodel(
              string user_username,
              string user_userPassword,
              float user_DebtBalance,

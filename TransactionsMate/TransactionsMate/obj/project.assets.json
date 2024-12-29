@@ -15,10 +15,10 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -33,11 +33,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -50,7 +50,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -142,7 +142,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -2553,10 +2553,10 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -2571,11 +2571,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -2588,7 +2588,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -2680,7 +2680,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -5091,10 +5091,10 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -5109,11 +5109,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -5126,7 +5126,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -5218,7 +5218,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -7629,10 +7629,10 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -7647,11 +7647,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -7664,7 +7664,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -7756,7 +7756,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -10167,10 +10167,10 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -10185,11 +10185,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -10202,7 +10202,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -10294,7 +10294,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -12705,10 +12705,10 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -12723,11 +12723,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -12740,7 +12740,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -12832,7 +12832,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -15243,10 +15243,10 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -15261,11 +15261,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -15278,7 +15278,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -15370,7 +15370,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -17781,10 +17781,10 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -17799,11 +17799,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -17816,7 +17816,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -17908,7 +17908,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -20306,10 +20306,10 @@
       }
     },
     "net8.0-ios18.0": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -20324,11 +20324,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -20341,7 +20341,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -20433,7 +20433,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -21058,10 +21058,10 @@
       }
     },
     "net8.0-ios18.0/android-arm": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -21076,11 +21076,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -21093,7 +21093,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -21185,7 +21185,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -21810,10 +21810,10 @@
       }
     },
     "net8.0-ios18.0/android-arm64": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -21828,11 +21828,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -21845,7 +21845,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -21937,7 +21937,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -22562,10 +22562,10 @@
       }
     },
     "net8.0-ios18.0/android-x64": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -22580,11 +22580,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -22597,7 +22597,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -22689,7 +22689,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -23314,10 +23314,10 @@
       }
     },
     "net8.0-ios18.0/android-x86": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -23332,11 +23332,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -23349,7 +23349,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -23441,7 +23441,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -24066,10 +24066,10 @@
       }
     },
     "net8.0-ios18.0/iossimulator-x64": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -24084,11 +24084,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -24101,7 +24101,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -24193,7 +24193,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -24818,10 +24818,10 @@
       }
     },
     "net8.0-ios18.0/maccatalyst-x64": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -24836,11 +24836,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -24853,7 +24853,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -24945,7 +24945,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -25570,10 +25570,10 @@
       }
     },
     "net8.0-ios18.0/win10-x64": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -25588,11 +25588,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -25605,7 +25605,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -25697,7 +25697,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -26322,10 +26322,10 @@
       }
     },
     "net8.0-maccatalyst18.0": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -26340,11 +26340,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -26357,7 +26357,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -26449,7 +26449,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -27074,10 +27074,10 @@
       }
     },
     "net8.0-maccatalyst18.0/android-arm": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -27092,11 +27092,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -27109,7 +27109,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -27201,7 +27201,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -27826,10 +27826,10 @@
       }
     },
     "net8.0-maccatalyst18.0/android-arm64": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -27844,11 +27844,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -27861,7 +27861,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -27953,7 +27953,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -28578,10 +28578,10 @@
       }
     },
     "net8.0-maccatalyst18.0/android-x64": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -28596,11 +28596,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -28613,7 +28613,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -28705,7 +28705,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -29330,10 +29330,10 @@
       }
     },
     "net8.0-maccatalyst18.0/android-x86": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -29348,11 +29348,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -29365,7 +29365,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -29457,7 +29457,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -30082,10 +30082,10 @@
       }
     },
     "net8.0-maccatalyst18.0/iossimulator-x64": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -30100,11 +30100,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -30117,7 +30117,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -30209,7 +30209,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -30834,10 +30834,10 @@
       }
     },
     "net8.0-maccatalyst18.0/maccatalyst-x64": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -30852,11 +30852,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -30869,7 +30869,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -30961,7 +30961,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -31586,10 +31586,10 @@
       }
     },
     "net8.0-maccatalyst18.0/win10-x64": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -31604,11 +31604,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -31621,7 +31621,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -31713,7 +31713,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -32338,10 +32338,10 @@
       }
     },
     "net8.0-windows10.0.19041": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -32356,11 +32356,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -32373,7 +32373,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -32465,7 +32465,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -33259,10 +33259,10 @@
       }
     },
     "net8.0-windows10.0.19041/android-arm": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -33277,11 +33277,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -33294,7 +33294,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -33386,7 +33386,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -34140,10 +34140,10 @@
       }
     },
     "net8.0-windows10.0.19041/android-arm64": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -34158,11 +34158,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -34175,7 +34175,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -34267,7 +34267,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -35021,10 +35021,10 @@
       }
     },
     "net8.0-windows10.0.19041/android-x64": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -35039,11 +35039,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -35056,7 +35056,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -35148,7 +35148,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -35902,10 +35902,10 @@
       }
     },
     "net8.0-windows10.0.19041/android-x86": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -35920,11 +35920,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -35937,7 +35937,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -36029,7 +36029,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -36783,10 +36783,10 @@
       }
     },
     "net8.0-windows10.0.19041/iossimulator-x64": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -36801,11 +36801,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -36818,7 +36818,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -36910,7 +36910,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -37664,10 +37664,10 @@
       }
     },
     "net8.0-windows10.0.19041/maccatalyst-x64": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -37682,11 +37682,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -37699,7 +37699,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -37791,7 +37791,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -38545,10 +38545,10 @@
       }
     },
     "net8.0-windows10.0.19041/win10-x64": {
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
+      "Microsoft.AspNetCore.Authorization/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
+          "Microsoft.AspNetCore.Metadata": "8.0.11",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         },
@@ -38563,11 +38563,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components/8.0.10": {
+      "Microsoft.AspNetCore.Components/8.0.11": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10",
-          "Microsoft.AspNetCore.Components.Analyzers": "8.0.10"
+          "Microsoft.AspNetCore.Authorization": "8.0.11",
+          "Microsoft.AspNetCore.Components.Analyzers": "8.0.11"
         },
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
@@ -38580,7 +38580,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
+      "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
         "type": "package",
         "build": {
           "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets": {}
@@ -38672,7 +38672,7 @@
           "build/Microsoft.AspNetCore.Components.WebView.Maui.targets": {}
         }
       },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
+      "Microsoft.AspNetCore.Metadata/8.0.11": {
         "type": "package",
         "compile": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -39451,10 +39451,10 @@
         "lib/net6.0-android31.0/GoogleGson.xml"
       ]
     },
-    "Microsoft.AspNetCore.Authorization/8.0.10": {
-      "sha512": "mENBehQP1H9oTB4Diu1l7vR1BeZrBNWA9sHZsln4l2oIs7D3qH3fokopU/8FWa9JSxQYNBT1MeYBCwguYOBjMQ==",
+    "Microsoft.AspNetCore.Authorization/8.0.11": {
+      "sha512": "ACaLyjBSz9WUzbaJe0Sv09/FihRNHYlRUIj3uQ8CZFFByf6Qwv3+PXnbltidFKz2iOyqdvppQias3emdQUY2nA==",
       "type": "package",
-      "path": "microsoft.aspnetcore.authorization/8.0.10",
+      "path": "microsoft.aspnetcore.authorization/8.0.11",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -39466,14 +39466,14 @@
         "lib/net8.0/Microsoft.AspNetCore.Authorization.xml",
         "lib/netstandard2.0/Microsoft.AspNetCore.Authorization.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Authorization.xml",
-        "microsoft.aspnetcore.authorization.8.0.10.nupkg.sha512",
+        "microsoft.aspnetcore.authorization.8.0.11.nupkg.sha512",
         "microsoft.aspnetcore.authorization.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Components/8.0.10": {
-      "sha512": "qTsPBcK6Z2Yyt+A5GPub9CiUxfmSIrNQ22BT8efzXiz50Vx0KKTsE82pxbipgGU9XNXZhEtYSNTqQFuWyRlIRw==",
+    "Microsoft.AspNetCore.Components/8.0.11": {
+      "sha512": "kyhSQcVEQvMnv2BNRn7JRgYCr+PIO5Uh1mhIFdCNycxE/k8NsI72sV693s1KVmVebMA8g3hTBmfBEheWb3hhww==",
       "type": "package",
-      "path": "microsoft.aspnetcore.components/8.0.10",
+      "path": "microsoft.aspnetcore.components/8.0.11",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -39481,14 +39481,14 @@
         "THIRD-PARTY-NOTICES.txt",
         "lib/net8.0/Microsoft.AspNetCore.Components.dll",
         "lib/net8.0/Microsoft.AspNetCore.Components.xml",
-        "microsoft.aspnetcore.components.8.0.10.nupkg.sha512",
+        "microsoft.aspnetcore.components.8.0.11.nupkg.sha512",
         "microsoft.aspnetcore.components.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Components.Analyzers/8.0.10": {
-      "sha512": "czb81hXe2a+w1py/U2MrO3aSb0Ht0r1/I+4vJucjTZwbhHtGubneifS3h05DB6CakT8dgKyS0eypQaLuDKkWtQ==",
+    "Microsoft.AspNetCore.Components.Analyzers/8.0.11": {
+      "sha512": "4JtFt5IR0ixuFpwY6D2Xi5R+vZQ6iykd2EuG3puHETCOZOgYG8M538LCY1lbgQTkHOL04YKDjQTQu8PU/BaXRQ==",
       "type": "package",
-      "path": "microsoft.aspnetcore.components.analyzers/8.0.10",
+      "path": "microsoft.aspnetcore.components.analyzers/8.0.11",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -39497,7 +39497,7 @@
         "analyzers/dotnet/cs/Microsoft.AspNetCore.Components.Analyzers.dll",
         "build/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets",
         "buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets",
-        "microsoft.aspnetcore.components.analyzers.8.0.10.nupkg.sha512",
+        "microsoft.aspnetcore.components.analyzers.8.0.11.nupkg.sha512",
         "microsoft.aspnetcore.components.analyzers.nuspec"
       ]
     },
@@ -39587,10 +39587,10 @@
         "microsoft.aspnetcore.components.webview.maui.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Metadata/8.0.10": {
-      "sha512": "E9YwEujZjXhMLi1hqJh+7iLk2DzNxa4dB9wYY8lHYpAzZdVqoGjaFsaaIzwCvSZZxd7S7Cds01Trlye2mTqeZA==",
+    "Microsoft.AspNetCore.Metadata/8.0.11": {
+      "sha512": "cy04xnMSTXTkRPjEwseRz57R5zjR/CWsdEOHH6NhWbNl97k+U1w6dSjqIOC7kv08tyzmM30FzIilSDtE5HdL/A==",
       "type": "package",
-      "path": "microsoft.aspnetcore.metadata/8.0.10",
+      "path": "microsoft.aspnetcore.metadata/8.0.11",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -39602,7 +39602,7 @@
         "lib/net8.0/Microsoft.AspNetCore.Metadata.xml",
         "lib/netstandard2.0/Microsoft.AspNetCore.Metadata.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.Metadata.xml",
-        "microsoft.aspnetcore.metadata.8.0.10.nupkg.sha512",
+        "microsoft.aspnetcore.metadata.8.0.11.nupkg.sha512",
         "microsoft.aspnetcore.metadata.nuspec"
       ]
     },
@@ -44059,6 +44059,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0-android34.0": [
+      "Microsoft.AspNetCore.Components >= 8.0.11",
       "Microsoft.AspNetCore.Components.WebView.Maui >= 8.0.83",
       "Microsoft.Extensions.Logging.Debug >= 8.0.0",
       "Microsoft.Maui.Controls >= 8.0.83",
@@ -44066,6 +44067,7 @@
       "Microsoft.NET.ILLink.Tasks >= 8.0.11"
     ],
     "net8.0-ios18.0": [
+      "Microsoft.AspNetCore.Components >= 8.0.11",
       "Microsoft.AspNetCore.Components.WebView.Maui >= 8.0.83",
       "Microsoft.Extensions.Logging.Debug >= 8.0.0",
       "Microsoft.Maui.Controls >= 8.0.83",
@@ -44073,6 +44075,7 @@
       "Microsoft.NET.ILLink.Tasks >= 8.0.11"
     ],
     "net8.0-maccatalyst18.0": [
+      "Microsoft.AspNetCore.Components >= 8.0.11",
       "Microsoft.AspNetCore.Components.WebView.Maui >= 8.0.83",
       "Microsoft.Extensions.Logging.Debug >= 8.0.0",
       "Microsoft.Maui.Controls >= 8.0.83",
@@ -44080,6 +44083,7 @@
       "Microsoft.NET.ILLink.Tasks >= 8.0.11"
     ],
     "net8.0-windows10.0.19041": [
+      "Microsoft.AspNetCore.Components >= 8.0.11",
       "Microsoft.AspNetCore.Components.WebView.Maui >= 8.0.83",
       "Microsoft.Extensions.Logging.Debug >= 8.0.0",
       "Microsoft.Maui.Controls >= 8.0.83",
@@ -44153,6 +44157,10 @@
       "net8.0-android34.0": {
         "targetAlias": "net8.0-android",
         "dependencies": {
+          "Microsoft.AspNetCore.Components": {
+            "target": "Package",
+            "version": "[8.0.11, )"
+          },
           "Microsoft.AspNetCore.Components.WebView.Maui": {
             "target": "Package",
             "version": "[8.0.83, )"
@@ -44222,6 +44230,10 @@
       "net8.0-ios18.0": {
         "targetAlias": "net8.0-ios",
         "dependencies": {
+          "Microsoft.AspNetCore.Components": {
+            "target": "Package",
+            "version": "[8.0.11, )"
+          },
           "Microsoft.AspNetCore.Components.WebView.Maui": {
             "target": "Package",
             "version": "[8.0.83, )"
@@ -44279,6 +44291,10 @@
       "net8.0-maccatalyst18.0": {
         "targetAlias": "net8.0-maccatalyst",
         "dependencies": {
+          "Microsoft.AspNetCore.Components": {
+            "target": "Package",
+            "version": "[8.0.11, )"
+          },
           "Microsoft.AspNetCore.Components.WebView.Maui": {
             "target": "Package",
             "version": "[8.0.83, )"
@@ -44337,6 +44353,10 @@
       "net8.0-windows10.0.19041": {
         "targetAlias": "net8.0-windows10.0.19041.0",
         "dependencies": {
+          "Microsoft.AspNetCore.Components": {
+            "target": "Package",
+            "version": "[8.0.11, )"
+          },
           "Microsoft.AspNetCore.Components.WebView.Maui": {
             "target": "Package",
             "version": "[8.0.83, )"

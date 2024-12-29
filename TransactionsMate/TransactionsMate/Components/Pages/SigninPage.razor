@@ -39,81 +39,11 @@
 <script>
     function showAlert(message) 
     {
-        alert(message); // Display the custom message in the alert box
+    alert(message); // Display the custom message in the alert box
     }
 </script>
 
 @code 
 {
-    string username = "";
-    string password = "";
-    string first_name = "";
-    string last_name = "";
-    float initial_available_balance = 0.0f;
-    float initial_debt_balance = 0.0f;
-
-
-    [CascadingParameter]
-    public RequiredDetails requiredDetails { get; set; }
-
-    public async Task SignInUser()
-    {
-        try
-        {
-            await JS.InvokeVoidAsync("console.log", "requiredDetails user_info_list count");
-            await JS.InvokeVoidAsync("console.log", $"{requiredDetails.user_info_list.Count()}");
-            if(requiredDetails.user_info_list.Count()>0)
-            {
-                var current_user_data = requiredDetails.user_info_list.FirstOrDefault(x => x.Username == username);
-                if (current_user_data != null)
-                {
-                    await JS.InvokeVoidAsync("console.log", "Username same");
-                    await JS.InvokeVoidAsync("showAlert", "Username same.Use different.");
-            
-                    return;
-                }
-                else
-                {
-                    
-                    UserInfMoodel obj = new UserInfMoodel(user_username: username, user_userPassword: password, user_AvailableBalance: initial_available_balance,
-                        user_DebtBalance: initial_debt_balance, user_firstName: first_name, user_lastName: last_name,user_type:"user");
-                    requiredDetails.user_info_list.Add(obj);
-                    await JS.InvokeVoidAsync("console.log", "signin success");
-                    // await JS.InvokeVoidAsync("console.log", $"{requiredDetails.user_info_list[0].Username}");
-                    await JS.InvokeVoidAsync("console.log", "user_info_list count value");
-                    await JS.InvokeVoidAsync("console.log", $"{requiredDetails.user_info_list.Count().ToString()}");
-                    await JS.InvokeVoidAsync("showAlert", "Sign-in successful!");
-                    Navigation.NavigateTo("/signinpage", forceLoad: false);
-                    return;
-                }   
-            }
-            else
-            {
-                
-                UserInfMoodel obj = new UserInfMoodel(user_username: username, user_userPassword: password, user_AvailableBalance: initial_available_balance,
-                    user_DebtBalance: initial_debt_balance, user_firstName: first_name, user_lastName: last_name,user_type:"user");
-                requiredDetails.user_info_list.Add(obj);
-                await JS.InvokeVoidAsync("console.log", "signin success");
-                // await JS.InvokeVoidAsync("console.log", $"{requiredDetails.user_info_list[0].Username}");
-                await JS.InvokeVoidAsync("console.log", "user_info_list count value");
-                await JS.InvokeVoidAsync("console.log", $"{requiredDetails.user_info_list.Count().ToString()}");
-                await JS.InvokeVoidAsync("showAlert", "Sign-in successful!");
-                Navigation.NavigateTo("/signinpage", forceLoad: false);
-                return;
-            }
-        }catch(Exception obj)
-        {
-            await JS.InvokeVoidAsync("console.log", "signin fail");
-            await JS.InvokeVoidAsync("console.log", "exception caught");
-            await JS.InvokeVoidAsync("console.log", $"{obj.ToString}");
-            await JS.InvokeVoidAsync("console.log", "{user_info_list count value}");
-            await JS.InvokeVoidAsync("console.log", $"{requiredDetails.user_info_list.Count()}");
-            await JS.InvokeVoidAsync("showAlert", "signin fail");
-       
-            return;
-        }
-    }
-
-
-
+  
 }
