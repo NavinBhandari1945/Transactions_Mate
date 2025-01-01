@@ -158,20 +158,20 @@ namespace TransactionsMate.Components.Pages
             try
             {
 
-                if (String.IsNullOrEmpty(TransactionsId) || String.IsNullOrEmpty(DebtId) || String.IsNullOrEmpty(TransactionsTittle))
+                if (String.IsNullOrEmpty(TransactionsId) || String.IsNullOrEmpty(TransactionsTittle))
                 {
-                    await JS.InvokeVoidAsync("console.log", $"Update fail.Empty transactions Id or debt Id or tittle.");
-                    await JS.InvokeVoidAsync("showAlert", "Update fail.Empty transactions Id or debt Id or tittle.");
+                    await JS.InvokeVoidAsync("console.log", $"Update fail.Empty transactions Id or tittle.");
+                    await JS.InvokeVoidAsync("showAlert", "Update fail.Empty transactions Id  or tittle.");
                     return 0;
                 }
                 var transactions_data = requiredDetails.transactions_info_list.FirstOrDefault(x => x.UserUsername == requiredDetails.CurrentUserUsername && x.TrId == TransactionsId);
-                var debt_data = requiredDetails.transactions_info_list.FirstOrDefault(x => x.UserUsername == requiredDetails.CurrentUserUsername && x.TrId == DebtId);
+               
 
-                if (transactions_data != null && debt_data != null)
+                if (transactions_data != null )
                 {
 
                     transactions_data.TrTitle = TransactionsTittle;
-                    debt_data.TrNote = TransactionsNote;
+                
                     await JS.InvokeVoidAsync("console.log", $"Update success");
                     await JS.InvokeVoidAsync("showAlert", "Update success");
                     return 1;
@@ -194,19 +194,18 @@ namespace TransactionsMate.Components.Pages
         {
             try
             {
-                if (String.IsNullOrEmpty(TransactionsId) || String.IsNullOrEmpty(DebtId) || String.IsNullOrEmpty(TransactionsNote))
+                if (String.IsNullOrEmpty(TransactionsId) || String.IsNullOrEmpty(TransactionsNote))
                 {
                     await JS.InvokeVoidAsync("console.log", $"Update fail.Empty transactions Id or debt Id or note");
                     await JS.InvokeVoidAsync("showAlert", "Update fail.Empty transactions Id or debt Id or note");
                     return 0;
                 }
                 var transactions_data = requiredDetails.transactions_info_list.FirstOrDefault(x => x.UserUsername == requiredDetails.CurrentUserUsername && x.TrId == TransactionsId);
-                var debt_data = requiredDetails.transactions_info_list.FirstOrDefault(x => x.UserUsername == requiredDetails.CurrentUserUsername && x.TrId == DebtId);
+        
 
-                if (transactions_data != null && debt_data != null)
+                if (transactions_data != null)
                 {
                     transactions_data.TrNote = TransactionsNote;
-                    debt_data.TrNote = TransactionsNote;
                     await JS.InvokeVoidAsync("console.log", $"Update success");
                     await JS.InvokeVoidAsync("showAlert", "Update success");
                     return 1;
@@ -494,8 +493,8 @@ namespace TransactionsMate.Components.Pages
                 // string.IsNullOrEmpty(TransactionsId)
                 )
                 {
-                    await JS.InvokeVoidAsync("console.log", "transactions type not select");
-                    await JS.InvokeVoidAsync("showAlert", "Transactions type not select.Transaction fail.");
+                    await JS.InvokeVoidAsync("console.log", "Fail try again.Fill transactions details properly.");
+                    await JS.InvokeVoidAsync("showAlert", "Fail try again.Fill transactions details properly.");
                     return;
                 }
 
