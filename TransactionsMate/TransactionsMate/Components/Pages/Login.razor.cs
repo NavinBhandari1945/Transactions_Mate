@@ -195,10 +195,10 @@ namespace TransactionsMate.Components.Pages
                     float firstLoginToUSD = ExchangeRatesToUSD[firstLoginCurrency];
 
                     // Convert amount to USD
-                    float amountInUSD = amount / firstLoginToUSD;
+                    float amountInUSD = amount * firstLoginToUSD;
 
                     // Convert USD amount to target currency
-                    float convertedAmount = amountInUSD * currentToUSD;
+                    float convertedAmount = amountInUSD / currentToUSD;
 
                     return convertedAmount;
                 }

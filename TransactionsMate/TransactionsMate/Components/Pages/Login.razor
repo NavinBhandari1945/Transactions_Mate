@@ -16,13 +16,15 @@
         <input type="password" class="form-control" id="exampleInputPassword1" @bind="password">
     </div>
 
+    <h5>Select the currency type.</h5>
     <select class="form-select" aria-label="Default select example" @bind="currencyType">
-        <option selected>Select the currency type.</option>
+        <option selected>Click me.</option>
         <option value="NRS">NRS</option>
         <option value="USD">USD</option>
         <option value="BGP">BGP</option>
         <option value="INRS">INRS</option>
     </select>
+
     <br />
     <button type="button" class="btn btn-primary" @onclick="LoginUser">Login</button>
 </form>

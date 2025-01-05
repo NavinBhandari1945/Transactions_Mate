@@ -189,6 +189,25 @@
                 </div>
             </div>
         </div>
+
+
+        <form class="transaction-form">
+
+            <div>
+
+                <label>Transaction ID (For Update Only)</label>
+                <input type="text" @bind="TransactionsId" class="form-control" placeholder="Enter transactions ID" />
+
+                <br />
+
+                <label>Debt ID (For Update Only)</label>
+                <input type="text" @bind="DebtId" class="form-control" placeholder="Enter debt ID" />
+
+            </div>
+
+        </form>
+        <br />
+
         <!-- Action Buttons -->
         <div class="d-flex flex-wrap gap-2 justify-content-center">
             <button class="btn btn-primary" @onclick="ToggleDateRangePicker">
@@ -231,7 +250,8 @@
 
             <label>Transaction Type</label>
             <select class="form-select" @bind="TransactionsType">
-                <option selected>Select the TransactionsType.</option>
+                <option value="">Select the TransactionsType.</option>
+                @* <option >Select the TransactionsType.</option> *@
                 <option value="Credit">Credit</option>
                 <option value="Debit">Debit</option>
             </select>
@@ -251,31 +271,35 @@
             <label>Transaction Source</label>
             <input type="text" @bind="TransactionsSource" class="form-control" placeholder="Enter source" />
 
-            <label>Transaction ID (For Update Only)</label>
-            <input type="text" @bind="TransactionsId" class="form-control" placeholder="Enter transactions ID" />
-
-            <label>Debt ID (For Update Only)</label>
-            <input type="text" @bind="DebtId" class="form-control" placeholder="Enter debt ID" />
-
             <button type="button" @onclick="DoTransactions" class="btn btn-success w-100 mt-3">Do  Transaction</button>
+
         </form>
     </div>
 
     <!-- Container 3: Transactions Details -->
     <div class="child-container">
+
         <h5>Transaction Details</h5>
         <div class="d-flex justify-content-between align-items-center mb-3">
             <!-- Label -->
             <label class="fw-bold">All Transactions</label>
             <!-- Search Field -->
             <input type="text" class="form-control w-50" placeholder="Search by title" @bind="SearchTittleTransactions" />
-            <!-- Sort Dropdown -->
-            <select class="form-select w-auto" @bind="SortTansactionsType">
-                <option selected >Select filter type.</option>
-                <option value="Credit">Credit</option>
-                <option value="Debit">Debit</option>
-                <option value="Debt">Debt</option>
-            </select>
+
+            <div>
+
+                <label class="fw-bold">  Select filter type.</label>
+                <!-- Sort Dropdown -->
+                <select class="form-select w-auto" @bind="SortTansactionsType">
+                    <option value="">Select type.</option>
+                    <option value="all">All</option>
+                    <option value="Credit">Credit</option>
+                    <option value="Debit">Debit</option>
+                    <option value="Debt">Debt</option>
+                </select>
+
+            </div>
+
         </div>
 
         <!-- Transactions Table -->
@@ -294,17 +318,17 @@
                         <th>Username</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     @{
                         if(
                             !FromDate.HasValue && !ToDate.HasValue &&
-                            !String.IsNullOrEmpty(SearchTittleTransactions) &&
-                        !String.IsNullOrEmpty(SortTansactionsType)
-
-                        
+                            String.IsNullOrEmpty(SearchTittleTransactions) &&
+                        String.IsNullOrEmpty(SortTansactionsType)      
                         )
                         {
-                            @foreach (var data in requiredDetails.transactions_info_list.ToList())
+                     
+                            @foreach (var data in requiredDetails.transactions_info_list.Where(x =>x.UserUsername==requiredDetails.CurrentUserUsername ).ToList())
                             {
                                 <tr>
                                     <td>@data.TrId</td>
@@ -314,15 +338,44 @@
                                     <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
                                     <td>@data.TrSource</td>
                                     <td>@data.TrNote</td>
-                                    <td>@data.TrAmount.ToString("C")</td>
+                                    <td>@data.TrAmount.ToString()</td>
                                     <td>@data.UserUsername</td>
                                 </tr>
                             }
                         }
-                        else
+
+                        if
+                        (
+                        FromDate.HasValue && ToDate.HasValue &&
+                        !String.IsNullOrEmpty(SearchTittleTransactions) &&
+                        !String.IsNullOrEmpty(SortTansactionsType)
+                  
+                        )
                         {
+                       
+                            @foreach (var data in requiredDetails.transactions_info_list.Where(x => x.UserUsername == requiredDetails.CurrentUserUsername
+                    && x.TrDate >= FromDate && x.TrDate <= ToDate && x.TrTitle == SearchTittleTransactions && x.TrType == SortTansactionsType
+                            ).ToList())
+                            {
+                                <tr>
+                                    <td>@data.TrId</td>
+                                    <td>@data.TrType</td>
+                                    <td>@data.TrTitle</td>
+                                    <td>@data.TrFlow</td>
+                                    <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
+                                    <td>@data.TrSource</td>
+                                    <td>@data.TrNote</td>
+                                    <td>@data.TrAmount.ToString()</td>
+                                    <td>@data.UserUsername</td>
+                                </tr>
+                            }
+
+                        }
+
+
                             if (FromDate.HasValue && ToDate.HasValue)
                             {
+                      
                                 @foreach (var data in requiredDetails.transactions_info_list.Where(x => x.TrDate >= FromDate && x.TrDate <= ToDate).ToList())
                                 {
                                     <tr>
@@ -333,101 +386,112 @@
                                         <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
                                         <td>@data.TrSource</td>
                                         <td>@data.TrNote</td>
-                                        <td>@data.TrAmount.ToString("C")</td>
+                                        <td>@data.TrAmount.ToString()</td>
                                         <td>@data.UserUsername</td>
                                     </tr>
                                 }
                             }
 
-                            else if (!String.IsNullOrEmpty(SearchTittleTransactions))
+                    
+                        if
+                        (!String.IsNullOrEmpty(SearchTittleTransactions))
+                        {
+                   
+                            var user_data = requiredDetails.transactions_info_list.Where(x => x.UserUsername == requiredDetails.CurrentUserUsername && x.TrTitle.ToString().ToLower().Trim() == SearchTittleTransactions.ToString().ToLower().Trim()).ToList();
+                            if (user_data != null)
+                            {
+                                @foreach (var data in user_data)
                                 {
-                                    var user_data = requiredDetails.transactions_info_list.Where(x => x.UserUsername == requiredDetails.CurrentUserUsername && x.TrTitle == SearchTittleTransactions).ToList();
-                                    if (user_data != null)
-                                    {
-                                        @foreach (var data in requiredDetails.transactions_info_list.Where(x => x.UserUsername == requiredDetails.CurrentUserUsername && x.TrTitle == SearchTittleTransactions).ToList())
-                                        {
-                                            <tr>
-                                                <td>@data.TrId</td>
-                                                <td>@data.TrType</td>
-                                                <td>@data.TrTitle</td>
-                                                <td>@data.TrFlow</td>
-                                                <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
-                                                <td>@data.TrSource</td>
-                                                <td>@data.TrNote</td>
-                                                <td>@data.TrAmount.ToString("C")</td>
-                                                <td>@data.UserUsername</td>
-                                            </tr>
-                                        }
-                                    }
-
-                                    else
-                                    {
-                                        <tr>
-
-                                            <td>No data available of that tittle..</td>
-
-                                        </tr>
-                                    }
-
+                                    <tr>
+                                        <td>@data.TrId</td>
+                                        <td>@data.TrType</td>
+                                        <td>@data.TrTitle</td>
+                                        <td>@data.TrFlow</td>
+                                        <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
+                                        <td>@data.TrSource</td>
+                                        <td>@data.TrNote</td>
+                                        <td>@data.TrAmount.ToString()</td>
+                                        <td>@data.UserUsername</td>
+                                    </tr>
                                 }
+                            }
 
-                                else if(!String.IsNullOrEmpty(SortTansactionsType))
-                                {
-                                    var user_data = requiredDetails.transactions_info_list.Where(x => x.UserUsername == requiredDetails.CurrentUserUsername && x.TrType == SortTansactionsType).ToList();
-                                    if (user_data != null)
-                                    {
-                                        @foreach (var data in requiredDetails.transactions_info_list.Where(x => x.UserUsername == requiredDetails.CurrentUserUsername && x.TrType == SortTansactionsType).ToList())
-                                        {
-                                            <tr>
-                                                <td>@data.TrId</td>
-                                                <td>@data.TrType</td>
-                                                <td>@data.TrTitle</td>
-                                                <td>@data.TrFlow</td>
-                                                <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
-                                                <td>@data.TrSource</td>
-                                                <td>@data.TrNote</td>
-                                                <td>@data.TrAmount.ToString("C")</td>
-                                                <td>@data.UserUsername</td>
-                                            </tr>
-                                        }
-                                    }
-                                    else
-                                    {
+                            else
+                            {
+                                <tr>
 
-                                        <tr>
+                                    <td>No data available of that tittle..</td>
 
-                                            <td>No data available of that type.</td>
-
-                                        </tr>
-                                    }
-
-                                }
-                           else
-                                {
-                                    @foreach (var data in requiredDetails.transactions_info_list.ToList())
-                                    {
-                                        <tr>
-                                            <td>@data.TrId</td>
-                                            <td>@data.TrType</td>
-                                            <td>@data.TrTitle</td>
-                                            <td>@data.TrFlow</td>
-                                            <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
-                                            <td>@data.TrSource</td>
-                                            <td>@data.TrNote</td>
-                                            <td>@data.TrAmount.ToString("C")</td>
-                                            <td>@data.UserUsername</td>
-                                        </tr>
-                                    }
-                                }
-
-                       
+                                </tr>
+                            }
 
                         }
+
+          
+                            if
+                            (!String.IsNullOrEmpty(SortTansactionsType))
+                            {
+                    
+                                    if (SortTansactionsType == "all")
+                                    {
+                                        @foreach (var data in requiredDetails.transactions_info_list.Where(x => x.UserUsername == requiredDetails.CurrentUserUsername).ToList())
+                                        {
+                                                                <tr>
+                                                                    <td>@data.TrId</td>
+                                                                    <td>@data.TrType</td>
+                                                                    <td>@data.TrTitle</td>
+                                                                    <td>@data.TrFlow</td>
+                                                                    <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
+                                                                    <td>@data.TrSource</td>
+                                                                    <td>@data.TrNote</td>
+                                                                    <td>@data.TrAmount.ToString()</td>
+                                                                    <td>@data.UserUsername</td>
+                                                                </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                             
+                                                            var user_data = requiredDetails.transactions_info_list.Where(x => x.UserUsername == requiredDetails.CurrentUserUsername && x.TrType == SortTansactionsType).ToList();
+
+                                                            if (user_data != null)
+                                                            {
+                                                                @foreach (var data in user_data)
+                                                                {
+                                                                    <tr>
+                                                                        <td>@data.TrId</td>
+                                                                        <td>@data.TrType</td>
+                                                                        <td>@data.TrTitle</td>
+                                                                        <td>@data.TrFlow</td>
+                                                                        <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
+                                                                        <td>@data.TrSource</td>
+                                                                        <td>@data.TrNote</td>
+                                                                        <td>@data.TrAmount.ToString()</td>
+                                                                        <td>@data.UserUsername</td>
+                                                                    </tr>
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+
+                                                                <tr>
+
+                                                                    <td>No data available of that type.</td>
+
+                                                                </tr>
+                                                            }
+                                    }
+                         
+                            }
+                  
+                   
                    
 
                     }
 
                 </tbody>
+
+
             </table>
         </div>
     </div>
@@ -461,7 +525,7 @@
                         @{
                             if (FromDate.HasValue && ToDate.HasValue)
                             {
-                                @foreach (var data in requiredDetails.debt_info_list.Where(x => x.DebtDate >= FromDate && x.DebtDate <= ToDate).ToList())
+                                @foreach (var data in requiredDetails.debt_info_list.Where(x => x.DebtDate >= FromDate && x.DebtDate <= ToDate && x.Username==requiredDetails.CurrentUserUsername).ToList())
                                 {
                                     <tr>
                                         <td>@data.DebtId</td>
@@ -469,7 +533,7 @@
                                         <td>@data.DebtTitle</td>
                                         <td>@data.DebtDate.ToString("yyyy-MM-dd")</td>
                                         <td>@data.DebtSource</td>
-                                        <td>@data.DebtAmount.ToString("C")</td>
+                                        <td>@data.DebtAmount.ToString()</td>
                                         <td>@data.TransactionFlow</td>
                                         <td>@data.DebtStatus</td>
                                         <td>@data.TransactionStatus</td>
@@ -479,7 +543,7 @@
                                 }
                             }
                             else{
-                                @foreach (var data in requiredDetails.debt_info_list.ToList())
+                                @foreach (var data in requiredDetails.debt_info_list.Where(x=>x.Username==requiredDetails.CurrentUserUsername).ToList())
                                 {
                                     <tr>
                                         <td>@data.DebtId</td>
@@ -487,7 +551,7 @@
                                         <td>@data.DebtTitle</td>
                                         <td>@data.DebtDate.ToString("yyyy-MM-dd")</td>
                                         <td>@data.DebtSource</td>
-                                        <td>@data.DebtAmount.ToString("C")</td>
+                                        <td>@data.DebtAmount.ToString()</td>
                                         <td>@data.TransactionFlow</td>
                                         <td>@data.DebtStatus</td>
                                         <td>@data.TransactionStatus</td>
@@ -531,7 +595,7 @@
                         @{
                             if (FromDate.HasValue && ToDate.HasValue)
                             {
-                                @foreach (var data in requiredDetails.debt_info_list.Where(x => x.DebtDate >= FromDate && x.DebtDate <= ToDate && x.DebtStatus=="to pay").ToList())
+                                @foreach (var data in requiredDetails.debt_info_list.Where(x => x.Username==requiredDetails.CurrentUserUsername && x.DebtDate >= FromDate && x.DebtDate <= ToDate && x.DebtStatus=="to pay").ToList())
                                 {
                                     <tr>
                                         <td>@data.DebtId</td>
@@ -539,7 +603,7 @@
                                         <td>@data.DebtTitle</td>
                                         <td>@data.DebtDate.ToString("yyyy-MM-dd")</td>
                                         <td>@data.DebtSource</td>
-                                        <td>@data.DebtAmount.ToString("C")</td>
+                                        <td>@data.DebtAmount.ToString()</td>
                                         <td>@data.TransactionFlow</td>
                                         <td>@data.DebtStatus</td>
                                         <td>@data.TransactionStatus</td>
@@ -549,7 +613,7 @@
                                 }
                             }
                             else{
-                                @foreach (var data in requiredDetails.debt_info_list.Where(debt => debt.DebtStatus == "to pay"))
+                                @foreach (var data in requiredDetails.debt_info_list.Where(debt =>debt.Username==requiredDetails.CurrentUserUsername &&  debt.DebtStatus == "to pay").ToList())
                                 {
                                     <tr>
                                         <td>@data.DebtId</td>
@@ -557,7 +621,7 @@
                                         <td>@data.DebtTitle</td>
                                         <td>@data.DebtDate.ToString("yyyy-MM-dd")</td>
                                         <td>@data.DebtSource</td>
-                                        <td>@data.DebtAmount.ToString("C")</td>
+                                        <td>@data.DebtAmount.ToString()</td>
                                         <td>@data.TransactionFlow</td>
                                         <td>@data.DebtStatus</td>
                                         <td>@data.TransactionStatus</td>
@@ -599,7 +663,7 @@
                         @{
                             if (FromDate.HasValue && ToDate.HasValue)
                             {
-                                @foreach (var data in requiredDetails.debt_info_list.Where(x => x.DebtDate >= FromDate && x.DebtDate <= ToDate && x.DebtStatus == "paid").ToList())
+                                @foreach (var data in requiredDetails.debt_info_list.Where(x => x.DebtDate >= FromDate && x.DebtDate <= ToDate && x.DebtStatus == "paid" && x.Username==requiredDetails.CurrentUserUsername).ToList())
                                 {
                                     <tr>
                                         <td>@data.DebtId</td>
@@ -607,7 +671,7 @@
                                         <td>@data.DebtTitle</td>
                                         <td>@data.DebtDate.ToString("yyyy-MM-dd")</td>
                                         <td>@data.DebtSource</td>
-                                        <td>@data.DebtAmount.ToString("C")</td>
+                                        <td>@data.DebtAmount.ToString()</td>
                                         <td>@data.TransactionFlow</td>
                                         <td>@data.DebtStatus</td>
                                         <td>@data.TransactionStatus</td>
@@ -617,7 +681,7 @@
                                 }
                             }
                             else{
-                                @foreach (var data in requiredDetails.debt_info_list.Where(debt => debt.DebtStatus == "paid"))
+                                @foreach (var data in requiredDetails.debt_info_list.Where(debt => debt.DebtStatus == "paid" && debt.Username==requiredDetails.CurrentUserUsername).ToList())
                                 {
                                     <tr>
                                         <td>@data.DebtId</td>
@@ -625,7 +689,7 @@
                                         <td>@data.DebtTitle</td>
                                         <td>@data.DebtDate.ToString("yyyy-MM-dd")</td>
                                         <td>@data.DebtSource</td>
-                                        <td>@data.DebtAmount.ToString("C")</td>
+                                        <td>@data.DebtAmount.ToString()</td>
                                         <td>@data.TransactionFlow</td>
                                         <td>@data.DebtStatus</td>
                                         <td>@data.TransactionStatus</td>
@@ -679,7 +743,7 @@
                                         <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
                                         <td>@data.TrSource</td>
                                         <td>@data.TrNote</td>
-                                        <td>@data.TrAmount.ToString("C")</td>
+                                        <td>@data.TrAmount.ToString()</td>
                                         <td>@data.UserUsername</td>
                                     </tr>
                                 }
@@ -696,7 +760,7 @@
                                         <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
                                         <td>@data.TrSource</td>
                                         <td>@data.TrNote</td>
-                                        <td>@data.TrAmount.ToString("C")</td>
+                                        <td>@data.TrAmount.ToString()</td>
                                         <td>@data.UserUsername</td>
                                     </tr>
                                 }
@@ -760,7 +824,7 @@
                                         <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
                                         <td>@data.TrSource</td>
                                         <td>@data.TrNote</td>
-                                        <td>@data.TrAmount.ToString("C")</td>
+                                        <td>@data.TrAmount.ToString()</td>
                                         <td>@data.UserUsername</td>
                                     </tr>
                                 }
@@ -808,7 +872,7 @@
                                         <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
                                         <td>@data.TrSource</td>
                                         <td>@data.TrNote</td>
-                                        <td>@data.TrAmount.ToString("C")</td>
+                                        <td>@data.TrAmount.ToString()</td>
                                         <td>@data.UserUsername</td>
                                     </tr>
                                 }
@@ -825,7 +889,7 @@
                                         <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
                                         <td>@data.TrSource</td>
                                         <td>@data.TrNote</td>
-                                        <td>@data.TrAmount.ToString("C")</td>
+                                        <td>@data.TrAmount.ToString()</td>
                                         <td>@data.UserUsername</td>
                                     </tr>
                                 }
@@ -872,7 +936,7 @@
                                         <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
                                         <td>@data.TrSource</td>
                                         <td>@data.TrNote</td>
-                                        <td>@data.TrAmount.ToString("C")</td>
+                                        <td>@data.TrAmount.ToString()</td>
                                         <td>@data.UserUsername</td>
                                     </tr>
                                 }
@@ -889,7 +953,7 @@
                                         <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
                                         <td>@data.TrSource</td>
                                         <td>@data.TrNote</td>
-                                        <td>@data.TrAmount.ToString("C")</td>
+                                        <td>@data.TrAmount.ToString()</td>
                                         <td>@data.UserUsername</td>
                                     </tr>
                                 }
@@ -936,7 +1000,7 @@
                                         <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
                                         <td>@data.TrSource</td>
                                         <td>@data.TrNote</td>
-                                        <td>@data.TrAmount.ToString("C")</td>
+                                        <td>@data.TrAmount.ToString()</td>
                                         <td>@data.UserUsername</td>
                                     </tr>
                                 }
@@ -953,7 +1017,7 @@
                                         <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
                                         <td>@data.TrSource</td>
                                         <td>@data.TrNote</td>
-                                        <td>@data.TrAmount.ToString("C")</td>
+                                        <td>@data.TrAmount.ToString()</td>
                                         <td>@data.UserUsername</td>
                                     </tr>
                                 }
@@ -999,7 +1063,7 @@
                                         <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
                                         <td>@data.TrSource</td>
                                         <td>@data.TrNote</td>
-                                        <td>@data.TrAmount.ToString("C")</td>
+                                        <td>@data.TrAmount.ToString()</td>
                                         <td>@data.UserUsername</td>
                                     </tr>
                                 }
@@ -1016,7 +1080,7 @@
                                         <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
                                         <td>@data.TrSource</td>
                                         <td>@data.TrNote</td>
-                                        <td>@data.TrAmount.ToString("C")</td>
+                                        <td>@data.TrAmount.ToString()</td>
                                         <td>@data.UserUsername</td>
                                     </tr>
                                 }
@@ -1067,7 +1131,7 @@
                                             <td>@data.DebtTitle</td>
                                             <td>@data.DebtDate.ToString("yyyy-MM-dd")</td>
                                             <td>@data.DebtSource</td>
-                                            <td>@data.DebtAmount.ToString("C")</td>
+                                            <td>@data.DebtAmount.ToString()</td>
                                             <td>@data.TransactionFlow</td>
                                             <td>@data.DebtStatus</td>
                                             <td>@data.TransactionStatus</td>
@@ -1085,7 +1149,7 @@
                                             <td>@data.DebtTitle</td>
                                             <td>@data.DebtDate.ToString("yyyy-MM-dd")</td>
                                             <td>@data.DebtSource</td>
-                                            <td>@data.DebtAmount.ToString("C")</td>
+                                            <td>@data.DebtAmount.ToString()</td>
                                             <td>@data.TransactionFlow</td>
                                             <td>@data.DebtStatus</td>
                                             <td>@data.TransactionStatus</td>
@@ -1135,7 +1199,7 @@
                                             <td>@data.DebtTitle</td>
                                             <td>@data.DebtDate.ToString("yyyy-MM-dd")</td>
                                             <td>@data.DebtSource</td>
-                                            <td>@data.DebtAmount.ToString("C")</td>
+                                            <td>@data.DebtAmount.ToString()</td>
                                             <td>@data.TransactionFlow</td>
                                             <td>@data.DebtStatus</td>
                                             <td>@data.TransactionStatus</td>
@@ -1154,7 +1218,7 @@
                                             <td>@data.DebtTitle</td>
                                             <td>@data.DebtDate.ToString("yyyy-MM-dd")</td>
                                             <td>@data.DebtSource</td>
-                                            <td>@data.DebtAmount.ToString("C")</td>
+                                            <td>@data.DebtAmount.ToString()</td>
                                             <td>@data.TransactionFlow</td>
                                             <td>@data.DebtStatus</td>
                                             <td>@data.TransactionStatus</td>

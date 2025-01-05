@@ -88,10 +88,43 @@ namespace TransactionsMate.Components.Pages
                     await JS.InvokeVoidAsync("showAlert", "Debt not clear.No debt to pay.");
                     return 1;
                 }
+
                 if (GetUserAvailableBalance() > GetUserDebtBalance())
                 {
                     float remain_amount = GetUserAvailableBalance() - GetUserDebtBalance();
                     var user_data = requiredDetails.user_info_list.FirstOrDefault(x => x.Username == requiredDetails.CurrentUserUsername);
+
+                    DebtModel debtModel = new DebtModel(
+                             DebtId: Guid.NewGuid().ToString(),
+                             TransactionType: "Debt",
+                             DebtTitle: "From clear debt features.",
+                             DebtDate: DateTime.Now,
+                             DebtSource: "From clear debt features.",
+                             DebtAmount: GetUserDebtBalance(),
+                             TransactionFlow: "Out",
+                             DebtStatus: "paid",
+                             TransactionStatus: "From clear debt features.",
+                             Username: requiredDetails.CurrentUserUsername,
+                             debtNote: "From clear debt features."
+                              );
+
+
+                    TransactionsModel transaction1 = new TransactionsModel(
+                       trId: Guid.NewGuid().ToString(),
+                       trType: "Debt",
+                       trTitle: "From clear debt features.",
+                       trFlow: "In",
+                       trDate: DateTime.Now,
+                       trSource: "From clear debt features.",
+                       trNote: "From clear debt features.",
+                       trAmount: GetUserDebtBalance(),
+                       userUsername: requiredDetails.CurrentUserUsername
+                       );
+
+                    requiredDetails.debt_info_list.Add(debtModel);
+                    requiredDetails.transactions_info_list.Add(transaction1);
+
+
                     user_data.UserDebtBalance = 0.0f;
                     user_data.UserAvailableBalance = remain_amount;
                     await JS.InvokeVoidAsync("console.log", "Debt clear.");
@@ -100,8 +133,48 @@ namespace TransactionsMate.Components.Pages
                 }
                 if (GetUserAvailableBalance() < GetUserDebtBalance())
                 {
-                    await JS.InvokeVoidAsync("console.log", "Debt not clear.Insufficient balance.");
-                    await JS.InvokeVoidAsync("showAlert", "Debt not clear.Insufficient balance.");
+                    float amount_clear = GetUserAvailableBalance();
+                    float remain_debt_amount = GetUserDebtBalance() - GetUserAvailableBalance();
+                    var user_data = requiredDetails.user_info_list.FirstOrDefault(x => x.Username == requiredDetails.CurrentUserUsername);
+
+
+                    DebtModel debtModel = new DebtModel(
+                             DebtId: Guid.NewGuid().ToString(),
+                             TransactionType: "Debt",
+                             DebtTitle: "From clear debt features.",
+                             DebtDate: DateTime.Now,
+                             DebtSource: "From clear debt features.",
+                             DebtAmount:amount_clear,
+                             TransactionFlow: "Out",
+                             DebtStatus: "paid",
+                             TransactionStatus: "From clear debt features.",
+                             Username: requiredDetails.CurrentUserUsername,
+                             debtNote: "From clear debt features."
+                              );
+
+
+                    TransactionsModel transaction1 = new TransactionsModel(
+                       trId: Guid.NewGuid().ToString(),
+                       trType: "Debt",
+                       trTitle: "From clear debt features.",
+                       trFlow: "In",
+                       trDate: DateTime.Now,
+                       trSource: "From clear debt features.",
+                       trNote: "From clear debt features.",
+                       trAmount:amount_clear,
+                       userUsername: requiredDetails.CurrentUserUsername
+                       );
+
+                    requiredDetails.debt_info_list.Add(debtModel);
+                    requiredDetails.transactions_info_list.Add(transaction1);
+
+
+                    user_data.UserDebtBalance = remain_debt_amount;
+                    user_data.UserAvailableBalance = 0.0f;
+
+
+                    await JS.InvokeVoidAsync("console.log", $"Debt clear with amount{amount_clear}.");
+                    await JS.InvokeVoidAsync("showAlert", $"Debt clear with amount{amount_clear}.");
                     return 1;
                 }
                 await JS.InvokeVoidAsync("console.log", "Clear debt fail.Try again.");
@@ -873,6 +946,7 @@ namespace TransactionsMate.Components.Pages
             {
                 await JS.InvokeVoidAsync("console.log", "exception caught");
                 await JS.InvokeVoidAsync("console.log", $"{obj.ToString()}");
+                StateHasChanged();
                 await JS.InvokeVoidAsync("showAlert", "Transactions fail");
 
             }
