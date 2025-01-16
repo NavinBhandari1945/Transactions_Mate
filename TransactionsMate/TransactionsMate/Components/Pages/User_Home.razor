@@ -295,7 +295,9 @@
                     <option value="all">All</option>
                     <option value="Credit">Credit</option>
                     <option value="Debit">Debit</option>
-                    <option value="Debt">Debt</option>
+                    <option value="Ascending">Ascending amount</option>
+                    <option value="Descending">Descending amount</option>
+
                 </select>
 
             </div>
@@ -327,7 +329,7 @@
                         String.IsNullOrEmpty(SortTansactionsType)      
                         )
                         {
-                     
+
                             @foreach (var data in requiredDetails.transactions_info_list.Where(x =>x.UserUsername==requiredDetails.CurrentUserUsername ).ToList())
                             {
                                 <tr>
@@ -349,13 +351,13 @@
                         FromDate.HasValue && ToDate.HasValue &&
                         !String.IsNullOrEmpty(SearchTittleTransactions) &&
                         !String.IsNullOrEmpty(SortTansactionsType)
-                  
+
                         )
                         {
-                       
+
                             @foreach (var data in requiredDetails.transactions_info_list.Where(x => x.UserUsername == requiredDetails.CurrentUserUsername
                     && x.TrDate >= FromDate && x.TrDate <= ToDate && x.TrTitle == SearchTittleTransactions && x.TrType == SortTansactionsType
-                            ).ToList())
+                           ).ToList())
                             {
                                 <tr>
                                     <td>@data.TrId</td>
@@ -373,30 +375,30 @@
                         }
 
 
-                            if (FromDate.HasValue && ToDate.HasValue)
-                            {
-                      
-                                @foreach (var data in requiredDetails.transactions_info_list.Where(x => x.TrDate >= FromDate && x.TrDate <= ToDate).ToList())
-                                {
-                                    <tr>
-                                        <td>@data.TrId</td>
-                                        <td>@data.TrType</td>
-                                        <td>@data.TrTitle</td>
-                                        <td>@data.TrFlow</td>
-                                        <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
-                                        <td>@data.TrSource</td>
-                                        <td>@data.TrNote</td>
-                                        <td>@data.TrAmount.ToString()</td>
-                                        <td>@data.UserUsername</td>
-                                    </tr>
-                                }
-                            }
+                        if (FromDate.HasValue && ToDate.HasValue)
+                        {
 
-                    
+                            @foreach (var data in requiredDetails.transactions_info_list.Where(x => x.TrDate >= FromDate && x.TrDate <= ToDate).ToList())
+                            {
+                                <tr>
+                                    <td>@data.TrId</td>
+                                    <td>@data.TrType</td>
+                                    <td>@data.TrTitle</td>
+                                    <td>@data.TrFlow</td>
+                                    <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
+                                    <td>@data.TrSource</td>
+                                    <td>@data.TrNote</td>
+                                    <td>@data.TrAmount.ToString()</td>
+                                    <td>@data.UserUsername</td>
+                                </tr>
+                            }
+                        }
+
+
                         if
                         (!String.IsNullOrEmpty(SearchTittleTransactions))
                         {
-                   
+
                             var user_data = requiredDetails.transactions_info_list.Where(x => x.UserUsername == requiredDetails.CurrentUserUsername && x.TrTitle.ToString().ToLower().Trim() == SearchTittleTransactions.ToString().ToLower().Trim()).ToList();
                             if (user_data != null)
                             {
@@ -427,29 +429,78 @@
 
                         }
 
-          
-                            if
-                            (!String.IsNullOrEmpty(SortTansactionsType))
+
+                        if
+                        (!String.IsNullOrEmpty(SortTansactionsType))
+                        {
+
+                            if (SortTansactionsType == "all")
                             {
-                    
-                                    if (SortTansactionsType == "all")
-                                    {
-                                        @foreach (var data in requiredDetails.transactions_info_list.Where(x => x.UserUsername == requiredDetails.CurrentUserUsername).ToList())
-                                        {
-                                                                <tr>
-                                                                    <td>@data.TrId</td>
-                                                                    <td>@data.TrType</td>
-                                                                    <td>@data.TrTitle</td>
-                                                                    <td>@data.TrFlow</td>
-                                                                    <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
-                                                                    <td>@data.TrSource</td>
-                                                                    <td>@data.TrNote</td>
-                                                                    <td>@data.TrAmount.ToString()</td>
-                                                                    <td>@data.UserUsername</td>
-                                                                </tr>
-                                        }
-                                    }
-                                    else
+                                @foreach (var data in requiredDetails.transactions_info_list.Where(x => x.UserUsername == requiredDetails.CurrentUserUsername).ToList())
+                                {
+                                    <tr>
+                                        <td>@data.TrId</td>
+                                        <td>@data.TrType</td>
+                                        <td>@data.TrTitle</td>
+                                        <td>@data.TrFlow</td>
+                                        <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
+                                        <td>@data.TrSource</td>
+                                        <td>@data.TrNote</td>
+                                        <td>@data.TrAmount.ToString()</td>
+                                        <td>@data.UserUsername</td>
+                                    </tr>
+                                }
+                            }
+                            else if(SortTansactionsType == "Ascending")
+                            {
+                                var sorted_data = requiredDetails.transactions_info_list
+                                .Where(x => x.UserUsername == requiredDetails.CurrentUserUsername)
+                                .OrderBy(x => x.TrAmount)
+                                .ToList();
+
+                                foreach (var data in sorted_data)
+                                {
+                                    <tr>
+                                        <td>@data.TrId</td>
+                                        <td>@data.TrType</td>
+                                        <td>@data.TrTitle</td>
+                                        <td>@data.TrFlow</td>
+                                        <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
+                                        <td>@data.TrSource</td>
+                                        <td>@data.TrNote</td>
+                                        <td>@data.TrAmount.ToString()</td>
+                                        <td>@data.UserUsername</td>
+                                    </tr>
+                                }
+
+                                
+                            }
+                            else if (SortTansactionsType == "Descending")
+                            {
+
+                                var sorted_data = requiredDetails.transactions_info_list
+                                .Where(x => x.UserUsername == requiredDetails.CurrentUserUsername)
+                                .OrderByDescending(x => x.TrAmount)
+                                .ToList();
+
+                                foreach (var data in sorted_data)
+                                {
+                                    <tr>
+                                        <td>@data.TrId</td>
+                                        <td>@data.TrType</td>
+                                        <td>@data.TrTitle</td>
+                                        <td>@data.TrFlow</td>
+                                        <td>@data.TrDate.ToString("yyyy-MM-dd")</td>
+                                        <td>@data.TrSource</td>
+                                        <td>@data.TrNote</td>
+                                        <td>@data.TrAmount.ToString()</td>
+                                        <td>@data.UserUsername</td>
+                                    </tr>
+                                }
+
+
+                            }
+                            else
                                     {
                              
                                                             var user_data = requiredDetails.transactions_info_list.Where(x => x.UserUsername == requiredDetails.CurrentUserUsername && x.TrType == SortTansactionsType).ToList();
@@ -495,6 +546,8 @@
             </table>
         </div>
     </div>
+
+
 
     <!-- Container 4: Debt Transactions Details -->
     <div class="child-container">

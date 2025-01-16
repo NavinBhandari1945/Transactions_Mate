@@ -58,26 +58,6 @@ namespace TransactionsMate.Components.Pages
             IsDateRangePickerVisible = !IsDateRangePickerVisible;
         }
 
-        // public async Task ApplyDateRange()
-        // {
-        //     if (FromDate == null || ToDate == null)
-        //     {
-        //         await JS.InvokeVoidAsync("showAlert", "Please select both From and To dates.");
-        //         return;
-        //     }
-
-        //     if (FromDate > ToDate)
-        //     {
-        //         await JS.InvokeVoidAsync("showAlert", "From date cannot be later than To date.");
-        //         return;
-        //     }
-
-        //     await JS.InvokeVoidAsync("console.log", $"Date range applied: {FromDate.Value.ToShortDateString()} to {ToDate.Value.ToShortDateString()}");
-        //     await JS.InvokeVoidAsync("showAlert", $"Date range applied: {FromDate.Value.ToShortDateString()} to {ToDate.Value.ToShortDateString()}");
-
-        //     ToggleDateRangePicker();
-        // }
-
         public async Task<int> ClearDebt()
         {
             try
@@ -394,6 +374,33 @@ namespace TransactionsMate.Components.Pages
             }
         }
 
+        public async Task DeleteJsonFileOnLogout()
+        {
+            try
+            {
+                // Define the directory path
+                string directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "TransactionsMate");
+                string filePath = Path.Combine(directoryPath, "user_data.json");
+
+                // Check if the file exists
+                if (File.Exists(filePath))
+                {
+                    // Delete the file
+                    File.Delete(filePath);
+                    await JS.InvokeVoidAsync("console.log", "JSON file deleted successfully: " + filePath);
+                }
+                else
+                {
+                    await JS.InvokeVoidAsync("console.log", "No JSON file found to delete at: " + filePath);
+                }
+            }
+            catch (Exception ex)
+            {
+                await JS.InvokeVoidAsync("console.log", $"Failed to delete JSON file: {ex.Message}");
+            }
+        }
+
+
         public async Task Logout()
         {
             try
@@ -405,6 +412,7 @@ namespace TransactionsMate.Components.Pages
                 {
                     requiredDetails.CurrencyTypeUser = "";
                     requiredDetails.CurrentUserUsername = "";
+                    await DeleteJsonFileOnLogout();
                     await JS.InvokeVoidAsync("console.log", "Logout success");
                     await JS.InvokeVoidAsync("showAlert", "Logout success.");
                     Navigation.NavigateTo("/");

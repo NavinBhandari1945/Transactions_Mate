@@ -1,4 +1,6 @@
-﻿@using TransactionsMate.Models
+﻿@using System.Security.Cryptography
+@using System.Text
+@using TransactionsMate.Models
 @inherits LayoutComponentBase
 
 <!-- CascadingValue is used to share RequiredDetails across child components -->
@@ -26,78 +28,51 @@
         public List<Dictionary<string, string>> FirstLoginCurrencyType { get; set; }
 
     }
+    public static string HashPassword(string password)
+    {
+        using var sha256 = SHA256.Create();
+        var bytes = Encoding.UTF8.GetBytes(password);
+        var hash = sha256.ComputeHash(bytes);
+        return Convert.ToBase64String(hash);
+    }
+
+    public static string adminHashPassword = HashPassword("admin");
+    public static string testUser1HashPassword = HashPassword("user");
 
     // Instance of RequiredDetails to be shared with child components
     public RequiredDetails requiredDetails = new RequiredDetails()
         {
             user_info_list = new List<UserInfoMoodel>()
             {
-                new UserInfoMoodel(user_AvailableBalance:0.0f,user_DebtBalance:0.0f,user_firstName:"Admin",user_lastName:"Admin",
-                user_type:"admin",user_username:"admin",user_userPassword:"admin"),//default user for test
+                new UserInfoMoodel(
+                    user_AvailableBalance:0.0f,
+                    user_DebtBalance:0.0f,
+                    user_firstName:"Admin",
+                    user_lastName:"Admin",
+                    user_type:"admin",
+                    user_username:"admin",
+                    user_userPassword:adminHashPassword
+                ),
+                //default user for test
+
+
                 new UserInfoMoodel(user_AvailableBalance:0.0f,user_DebtBalance:0.0f,user_firstName:"user",user_lastName:"user",
-                user_type:"user",user_username:"user",user_userPassword:"user"),//default user for test
+                user_type:"user",user_username:"user",
+                user_userPassword:testUser1HashPassword
+                ),
+                //default user for test
             },
             transactions_info_list = new List<TransactionsModel>(),  
             debt_info_list = new List<DebtModel>()
             {
-                // new DebtModel(     
-                //         DebtId: Guid.NewGuid().ToString(),
-                //         TransactionType: "Debt",
-                //         DebtTitle: "Personal Loan",
-                //         DebtDate: new DateTime(2019, 12, 21),
-                //         DebtSource: "Bank",
-                //         DebtAmount: 300.0f,
-                //         TransactionFlow: "In",
-                //         DebtStatus: "to pay",
-                //         TransactionStatus: "Debit",
-                //         Username: "user",
-                //         debtNote:"FWSDSD"
-                // ),
-                //     new DebtModel(
-                //         DebtId: Guid.NewGuid().ToString(),
-                //         TransactionType: "Debt",
-                //         DebtTitle: "Personal Loan",
-                //         DebtDate: new DateTime(2019, 12, 21),
-                //         DebtSource: "Bank",
-                //         DebtAmount: 500.0f,
-                //         TransactionFlow: "In",
-                //         DebtStatus: "to pay",
-                //         TransactionStatus: "Debit",
-                //         Username: "user",
-                //          debtNote:"FWSDSD"
-                // ),
-                //     new DebtModel(
-                //         DebtId: Guid.NewGuid().ToString(),
-                //         TransactionType: "Debt",
-                //         DebtTitle: "Personal Loan",
-                //         DebtDate: new DateTime(2019, 12, 21),
-                //         DebtSource: "Bank",
-                //         DebtAmount: 600.0f,
-                //         TransactionFlow: "Out",
-                //         DebtStatus: "paid",
-                //         TransactionStatus: "Credit",
-                //         Username: "user",
-                //          debtNote:"FWSDSD"
-                // ),
-                //     new DebtModel(
-                //         DebtId: Guid.NewGuid().ToString(),
-                //         TransactionType: "Debt",
-                //         DebtTitle: "Personal Loan",
-                //         DebtDate: new DateTime(2019, 12, 21),
-                //         DebtSource: "Bank",
-                //         DebtAmount: 800.0f,
-                //         TransactionFlow: "Out",
-                //         DebtStatus: "paid",
-                //         TransactionStatus: "Credit",
-                //         Username: "user",
-                //         debtNote:"FWSDSD"
-                // ),
-
+         
             },  
             CurrencyTypeUser = "",
             CurrentUserUsername = "",
             FirstLoginCurrencyType = new List<Dictionary<string, string>>()
         };
+
+
 
 }
 

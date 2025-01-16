@@ -3,13 +3,15 @@ using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using static TransactionsMate.Components.Layout.MainLayout;
 
 namespace TransactionsMate.Components.Pages
 {
-    public partial class Login:ComponentBase
+    public partial class Login : ComponentBase
     {
         public string username { get; set; } = "";
         public string password { get; set; } = "";
@@ -18,79 +20,133 @@ namespace TransactionsMate.Components.Pages
         [CascadingParameter]
         public RequiredDetails requiredDetails { get; set; }
 
+        private async Task<bool> IsUsernameInJsonFile(string username)
+        {
+            try
+            {
+                string directoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "TransactionsMate");
+                string filePath = Path.Combine(directoryPath, "user_data.json");
+
+                if (!File.Exists(filePath))
+                {
+                    await JS.InvokeVoidAsync("console.log", "user_data.json file does not exist.");
+                    return false;
+                }
+
+                string jsonData = await File.ReadAllTextAsync(filePath);
+                var userList = JsonSerializer.Deserialize<List<Dictionary<string, string>>>(jsonData);
+
+                return userList?.Any(user => user.ContainsKey("Username") && user["Username"] == username) ?? false;
+            }
+            catch (Exception ex)
+            {
+                await JS.InvokeVoidAsync("console.log", $"Exception while checking username in JSON file: {ex.Message}");
+                return false;
+            }
+        }
+
+        public string HashPassword(string password)
+        {
+            using var sha256 = SHA256.Create();
+            var bytes = Encoding.UTF8.GetBytes(password);
+            var hash = sha256.ComputeHash(bytes);
+            return Convert.ToBase64String(hash);
+        }
+
         // Method to handle form submission
         private async Task LoginUser()
         {
-            if (string.IsNullOrEmpty(username))
+            try
             {
-                await JS.InvokeVoidAsync("showAlert", "Enter username and try again.");
-                return;
-            }
-
-            if (string.IsNullOrEmpty(password))
-            {
-                await JS.InvokeVoidAsync("showAlert", "Enter password and try again.");
-                return;
-            }
-
-            var user_details = requiredDetails.user_info_list.FirstOrDefault(x => x.Username == username);
-            if (user_details != null)
-            {
-                if (user_details.UserPassword == password)
+                if (string.IsNullOrEmpty(username))
                 {
-                    if (user_details.UserType == "user")
-                    {
-                        requiredDetails.CurrencyTypeUser = currencyType;
-                        requiredDetails.CurrentUserUsername = username;
-                        Dictionary<string, string> first_login_currency_type = new Dictionary<string, string>()
-                    {
-                         { "user_username", requiredDetails.CurrentUserUsername },
-                         { "firstlogin_currency_type", requiredDetails.CurrencyTypeUser }
-                    };
-                        string keyToFind = "user_username";
-                        string valueToMatch = requiredDetails.CurrentUserUsername;
+                    await JS.InvokeVoidAsync("showAlert", "Enter username and try again.");
+                    return;
+                }
 
-                        if (requiredDetails.FirstLoginCurrencyType.Count() >= 1)
+                if (string.IsNullOrEmpty(password))
+                {
+                    await JS.InvokeVoidAsync("showAlert", "Enter password and try again.");
+                    return;
+                }
+
+                var user_details = requiredDetails.user_info_list.FirstOrDefault(x => x.Username == username);
+                bool result=await IsUsernameInJsonFile(username);
+                if (result==true || user_details.Username==username)
+                {
+                    if (user_details.UserPassword == HashPassword(password))
+                    {
+                        if (user_details.UserType == "user")
                         {
-                            bool already_login = CheckUserFirstLogin(requiredDetails.FirstLoginCurrencyType, keyToFind, valueToMatch);
-                            if (already_login == true)
+                            requiredDetails.CurrencyTypeUser = currencyType;
+                            requiredDetails.CurrentUserUsername = username;
+                            Dictionary<string, string> first_login_currency_type = new Dictionary<string, string>()
+                                                            {
+                                                                 { "user_username", requiredDetails.CurrentUserUsername },
+                                                                 { "firstlogin_currency_type", requiredDetails.CurrencyTypeUser }
+                                                            };
+                            string keyToFind = "user_username";
+                            string valueToMatch = requiredDetails.CurrentUserUsername;
+
+                            if (requiredDetails.FirstLoginCurrencyType.Count() >= 1)
                             {
-                                await JS.InvokeVoidAsync("console.log", "first login value");
-                                await JS.InvokeVoidAsync("console.log", $"{requiredDetails.FirstLoginCurrencyType.Count()}");
-                                await JS.InvokeVoidAsync("console.log", $"{requiredDetails.FirstLoginCurrencyType[0]["firstlogin_currency_type"]}");
-                                await JS.InvokeVoidAsync("console.log", "User currency type.");
-                                await JS.InvokeVoidAsync("console.log", $"{requiredDetails.CurrencyTypeUser.ToString()}");
-                                await JS.InvokeVoidAsync("console.log", "login success");
+                                bool already_login = CheckUserFirstLogin(requiredDetails.FirstLoginCurrencyType, keyToFind, valueToMatch);
+                                if (already_login == true)
+                                {
+                                    await JS.InvokeVoidAsync("console.log", "first login value");
+                                    await JS.InvokeVoidAsync("console.log", $"{requiredDetails.FirstLoginCurrencyType.Count()}");
+                                    await JS.InvokeVoidAsync("console.log", $"{requiredDetails.FirstLoginCurrencyType[0]["firstlogin_currency_type"]}");
+                                    await JS.InvokeVoidAsync("console.log", "User currency type.");
+                                    await JS.InvokeVoidAsync("console.log", $"{requiredDetails.CurrencyTypeUser.ToString()}");
+                                    await JS.InvokeVoidAsync("console.log", "login success");
 
-                                var user_data = requiredDetails.user_info_list.FirstOrDefault(x => x.Username == requiredDetails.CurrentUserUsername);
-                                string first_login_currency_type_value = GetFirstLoginCurrencyType(requiredDetails.CurrentUserUsername);
-                                await JS.InvokeVoidAsync("console.log", "first_login_currency_type_value");
-                                await JS.InvokeVoidAsync("console.log", $"{first_login_currency_type_value}");
+                                    var user_data = requiredDetails.user_info_list.FirstOrDefault(x => x.Username == requiredDetails.CurrentUserUsername);
+                                    string first_login_currency_type_value = GetFirstLoginCurrencyType(requiredDetails.CurrentUserUsername);
+                                    await JS.InvokeVoidAsync("console.log", "first_login_currency_type_value");
+                                    await JS.InvokeVoidAsync("console.log", $"{first_login_currency_type_value}");
 
-                                float? user_convert_av_balance = ConvertCurrency(requiredDetails.CurrencyTypeUser, first_login_currency_type_value, user_data.UserAvailableBalance);
-                                float? user_convert_debt_balance = ConvertCurrency(requiredDetails.CurrencyTypeUser, first_login_currency_type_value, user_data.UserDebtBalance);
+                                    float? user_convert_av_balance = ConvertCurrency(requiredDetails.CurrencyTypeUser, first_login_currency_type_value, user_data.UserAvailableBalance);
+                                    float? user_convert_debt_balance = ConvertCurrency(requiredDetails.CurrencyTypeUser, first_login_currency_type_value, user_data.UserDebtBalance);
 
-                                await JS.InvokeVoidAsync("console.log", "debt balance value after concersion");
-                                await JS.InvokeVoidAsync("console.log", $"{user_convert_debt_balance}");
+                                    await JS.InvokeVoidAsync("console.log", "debt balance value after concersion");
+                                    await JS.InvokeVoidAsync("console.log", $"{user_convert_debt_balance}");
 
-                                await JS.InvokeVoidAsync("console.log", "available balance value after concersion");
-                                await JS.InvokeVoidAsync("console.log", $"{user_convert_av_balance}");
+                                    await JS.InvokeVoidAsync("console.log", "available balance value after concersion");
+                                    await JS.InvokeVoidAsync("console.log", $"{user_convert_av_balance}");
 
 
-                                user_data.UserDebtBalance = ConvertCurrency(requiredDetails.CurrencyTypeUser, first_login_currency_type_value, user_data.UserDebtBalance);
-                                user_data.UserAvailableBalance = ConvertCurrency(requiredDetails.CurrencyTypeUser, first_login_currency_type_value, user_data.UserAvailableBalance);
+                                    user_data.UserDebtBalance = ConvertCurrency(requiredDetails.CurrencyTypeUser, first_login_currency_type_value, user_data.UserDebtBalance);
+                                    user_data.UserAvailableBalance = ConvertCurrency(requiredDetails.CurrencyTypeUser, first_login_currency_type_value, user_data.UserAvailableBalance);
 
-                                await JS.InvokeVoidAsync("console.log", "debt balance value after concersion");
-                                await JS.InvokeVoidAsync("console.log", $"{user_data.UserAvailableBalance}");
+                                    await JS.InvokeVoidAsync("console.log", "debt balance value after concersion");
+                                    await JS.InvokeVoidAsync("console.log", $"{user_data.UserAvailableBalance}");
 
-                                await JS.InvokeVoidAsync("console.log", "debt balance value after concersion");
-                                await JS.InvokeVoidAsync("console.log", $"{user_data.UserDebtBalance}");
+                                    await JS.InvokeVoidAsync("console.log", "debt balance value after concersion");
+                                    await JS.InvokeVoidAsync("console.log", $"{user_data.UserDebtBalance}");
 
-                                await JS.InvokeVoidAsync("showAlert", "Login Success.Welcome to user home page");
-                                Navigation.NavigateTo("/userhome");
-                                return;
+                                    await JS.InvokeVoidAsync("showAlert", "Login Success.Welcome to user home page");
+                                    Navigation.NavigateTo("/userhome");
+                                    return;
+                                }
+                                if (already_login == false)
+                                {
+                                    await JS.InvokeVoidAsync("console.log", "first login value");
+                                    await JS.InvokeVoidAsync("console.log", $"{requiredDetails.FirstLoginCurrencyType.Count()}");
+
+                                    requiredDetails.FirstLoginCurrencyType.Add(first_login_currency_type);
+
+                                    await JS.InvokeVoidAsync("console.log", "first login value");
+                                    await JS.InvokeVoidAsync("console.log", $"{requiredDetails.FirstLoginCurrencyType.Count()}");
+                                    await JS.InvokeVoidAsync("console.log", $"{requiredDetails.FirstLoginCurrencyType[0]["firstlogin_currency_type"]}");
+                                    await JS.InvokeVoidAsync("console.log", "User currency type.");
+                                    await JS.InvokeVoidAsync("console.log", $"{requiredDetails.CurrencyTypeUser.ToString()}");
+                                    await JS.InvokeVoidAsync("console.log", "login success");
+                                    await JS.InvokeVoidAsync("showAlert", "Login Success.Welcome to user home page");
+                                    Navigation.NavigateTo("/userhome");
+                                    return;
+                                }
                             }
-                            if (already_login == false)
+                            else
                             {
                                 await JS.InvokeVoidAsync("console.log", "first login value");
                                 await JS.InvokeVoidAsync("console.log", $"{requiredDetails.FirstLoginCurrencyType.Count()}");
@@ -100,6 +156,7 @@ namespace TransactionsMate.Components.Pages
                                 await JS.InvokeVoidAsync("console.log", "first login value");
                                 await JS.InvokeVoidAsync("console.log", $"{requiredDetails.FirstLoginCurrencyType.Count()}");
                                 await JS.InvokeVoidAsync("console.log", $"{requiredDetails.FirstLoginCurrencyType[0]["firstlogin_currency_type"]}");
+
                                 await JS.InvokeVoidAsync("console.log", "User currency type.");
                                 await JS.InvokeVoidAsync("console.log", $"{requiredDetails.CurrencyTypeUser.ToString()}");
                                 await JS.InvokeVoidAsync("console.log", "login success");
@@ -107,51 +164,38 @@ namespace TransactionsMate.Components.Pages
                                 Navigation.NavigateTo("/userhome");
                                 return;
                             }
+
                         }
-                        else
+
+                        if (user_details.UserType == "admin")
                         {
-                            await JS.InvokeVoidAsync("console.log", "first login value");
-                            await JS.InvokeVoidAsync("console.log", $"{requiredDetails.FirstLoginCurrencyType.Count()}");
-
-                            requiredDetails.FirstLoginCurrencyType.Add(first_login_currency_type);
-
-                            await JS.InvokeVoidAsync("console.log", "first login value");
-                            await JS.InvokeVoidAsync("console.log", $"{requiredDetails.FirstLoginCurrencyType.Count()}");
-                            await JS.InvokeVoidAsync("console.log", $"{requiredDetails.FirstLoginCurrencyType[0]["firstlogin_currency_type"]}");
-
+                            requiredDetails.CurrencyTypeUser = currencyType;
                             await JS.InvokeVoidAsync("console.log", "User currency type.");
                             await JS.InvokeVoidAsync("console.log", $"{requiredDetails.CurrencyTypeUser.ToString()}");
                             await JS.InvokeVoidAsync("console.log", "login success");
-                            await JS.InvokeVoidAsync("showAlert", "Login Success.Welcome to user home page");
-                            Navigation.NavigateTo("/userhome");
+                            requiredDetails.CurrentUserUsername = username;
+                            await JS.InvokeVoidAsync("showAlert", "Login Success.Welcome to admin home page");
+                            Navigation.NavigateTo("/adminhome");
                             return;
                         }
-
                     }
-
-                    if (user_details.UserType == "admin")
+                    else
                     {
-                        requiredDetails.CurrencyTypeUser = currencyType;
-                        await JS.InvokeVoidAsync("console.log", "User currency type.");
-                        await JS.InvokeVoidAsync("console.log", $"{requiredDetails.CurrencyTypeUser.ToString()}");
-                        await JS.InvokeVoidAsync("console.log", "login success");
-                        requiredDetails.CurrentUserUsername = username;
-                        await JS.InvokeVoidAsync("showAlert", "Login Success.Welcome to admin home page");
-                        Navigation.NavigateTo("/adminhome");
+                        await JS.InvokeVoidAsync("showAlert", "Password incorrect.");
                         return;
                     }
                 }
                 else
                 {
-                    await JS.InvokeVoidAsync("showAlert", "Password incorrect.");
+                    await JS.InvokeVoidAsync("showAlert", "User don't found.Sign up.");
                     return;
                 }
             }
-            else
+            catch (Exception ex)
             {
-                await JS.InvokeVoidAsync("showAlert", "Username don't exist.");
-                return;
+                await JS.InvokeVoidAsync("console.log", $"Exception caught at login method.Exception = {ex.ToString()}");
             }
+
         }
 
         public bool CheckUserFirstLogin(
