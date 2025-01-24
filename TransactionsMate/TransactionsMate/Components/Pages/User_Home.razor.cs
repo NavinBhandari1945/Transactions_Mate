@@ -489,6 +489,7 @@ namespace TransactionsMate.Components.Pages
 
                 if (user_data != null)
                 {
+
                     float amount_insufficient = TransactionsAmount - user_data.UserAvailableBalance;
 
                     DebtModel debtModel = new DebtModel(
@@ -533,8 +534,14 @@ namespace TransactionsMate.Components.Pages
                        userUsername: requiredDetails.CurrentUserUsername
                        );
 
+              
+                    double UpdateDebtBalance = user_data.UserDebtBalance + amount_insufficient;
+
+                    user_data.UserDebtBalance = (float)UpdateDebtBalance;
+
                     user_data.UserAvailableBalance = 0.0F;
-                    user_data.UserDebtBalance = amount_insufficient;
+
+
 
                     requiredDetails.debt_info_list.Add(debtModel);
                     requiredDetails.transactions_info_list.Add(transaction1);
@@ -545,6 +552,120 @@ namespace TransactionsMate.Components.Pages
                     StateHasChanged();
                     await JS.InvokeVoidAsync("showAlert", "Transactions success.");
                     return;
+
+
+
+
+                }
+                UpdateTransactionProperties();
+                UpdateDebtProperties();
+                StateHasChanged();
+                await JS.InvokeVoidAsync("console.log", "transaction failed");
+                UpdateTransactionProperties();
+                UpdateDebtProperties();
+                StateHasChanged();
+                await JS.InvokeVoidAsync("showAlert", "Transactions failed.");
+                return;
+
+            }
+            catch (Exception ex)
+            {
+                await JS.InvokeVoidAsync("console.log", "exception caught in proceed with debt.");
+                await JS.InvokeVoidAsync("showAlert", "Transactions cancel.");
+            }
+        }
+
+       
+        public async Task TakeDebt()
+        {
+
+            try
+            {
+                if
+                (
+                   string.IsNullOrEmpty(TransactionsFlow) ||
+                   string.IsNullOrEmpty(TransactionsType) ||
+                   // TransactionsDate == default(DateTime) ||
+                   TransactionsAmount <= 0.0f ||
+                   string.IsNullOrEmpty(TransactionsSource) ||
+                   string.IsNullOrEmpty(TransactionsNote) ||
+                   string.IsNullOrEmpty(TransactionsTittle)
+                // string.IsNullOrEmpty(TransactionsId)
+                )
+                {
+                    await JS.InvokeVoidAsync("console.log", "Fail try again.Fill transactions details properly.");
+                    await JS.InvokeVoidAsync("showAlert", "Fail try again.Fill transactions details properly.");
+                    return;
+                }
+
+                await JS.InvokeVoidAsync("console.log", "transactions type value");
+                await JS.InvokeVoidAsync("console.log", $"{TransactionsType}");
+
+                if (TransactionsFlow == "In" && TransactionsType == "Debit")
+                {
+                    await JS.InvokeVoidAsync("console.log", "Trransactions type can not be debit when flow is In.");
+                    await JS.InvokeVoidAsync("showAlert", "Trransactions type can not be debit when flow is In.");
+                    return;
+
+                }
+
+                if (TransactionsFlow == "Out" && TransactionsType == "Credit")
+                {
+                    await JS.InvokeVoidAsync("console.log", "Trransactions type can not be Credit when flow is Out.");
+                    await JS.InvokeVoidAsync("showAlert", "Trransactions type can not be Credit when flow is Out.");
+                    return;
+
+                }
+
+                var user_data = requiredDetails.user_info_list
+                         .FirstOrDefault(user => user.Username == requiredDetails.CurrentUserUsername);
+
+                if (user_data != null)
+                {
+
+                 
+                    DebtModel debtModel = new DebtModel(
+                             DebtId: Guid.NewGuid().ToString(),
+                             TransactionType: "Debt",
+                             DebtTitle: TransactionsTittle,
+                             DebtDate: TransactionsDate,
+                             DebtSource: TransactionsSource,
+                             DebtAmount: TransactionsAmount,
+                             TransactionFlow: "In",
+                             DebtStatus: "to pay",
+                             TransactionStatus: TransactionsType,
+                             Username: requiredDetails.CurrentUserUsername,
+                             debtNote: TransactionsNote
+                              );
+
+
+                    TransactionsModel transaction1 = new TransactionsModel(
+                       trId: Guid.NewGuid().ToString(),
+                       trType: "Credit",
+                       trTitle: TransactionsTittle,
+                       trFlow: "In",
+                       trDate: TransactionsDate,
+                       trSource: TransactionsSource,
+                       trNote: TransactionsNote,
+                       trAmount: TransactionsAmount,
+                       userUsername: requiredDetails.CurrentUserUsername
+                       );
+
+                    double UpdateUserBalance = user_data.UserAvailableBalance + TransactionsAmount;
+                    double UpdateDebtBalance = user_data.UserDebtBalance + TransactionsAmount;
+
+                    user_data.UserAvailableBalance = (float)UpdateUserBalance;
+                    user_data.UserDebtBalance = (float)UpdateDebtBalance;
+
+                    requiredDetails.debt_info_list.Add(debtModel);
+                    requiredDetails.transactions_info_list.Add(transaction1);
+
+                    await JS.InvokeVoidAsync("console.log", "Debt take ssuccess");
+                    UpdateTransactionProperties();
+                    UpdateDebtProperties();
+                    StateHasChanged();
+                    await JS.InvokeVoidAsync("showAlert", "Debt take ssuccess");
+                    return;
                 }
                 UpdateTransactionProperties();
                 UpdateDebtProperties();
@@ -553,9 +674,10 @@ namespace TransactionsMate.Components.Pages
             }
             catch (Exception ex)
             {
-                await JS.InvokeVoidAsync("console.log", "exception caught in proceed with debt.");
-                await JS.InvokeVoidAsync("showAlert", "Transactions cancel.");
+                await JS.InvokeVoidAsync("console.log", "exception caught in Debt take");
+                await JS.InvokeVoidAsync("showAlert", "Debt take cancel.");
             }
+
         }
 
         public async Task DoTransactions()
@@ -567,7 +689,7 @@ namespace TransactionsMate.Components.Pages
                    string.IsNullOrEmpty(TransactionsFlow) ||
                    string.IsNullOrEmpty(TransactionsType) ||
                    // TransactionsDate == default(DateTime) ||
-                   TransactionsAmount == 0.0f ||
+                   TransactionsAmount <= 0.0f ||
                    string.IsNullOrEmpty(TransactionsSource) ||
                    string.IsNullOrEmpty(TransactionsNote) ||
                    string.IsNullOrEmpty(TransactionsTittle)
@@ -733,7 +855,7 @@ namespace TransactionsMate.Components.Pages
                         if (TransactionsAmount < initial_debt_amount_to_pay)
                         {
                             var user_data = requiredDetails.user_info_list.FirstOrDefault(x => x.Username == requiredDetails.CurrentUserUsername);
-                            float total_available_amount_use_to_pay = user_data.UserAvailableBalance + TransactionsAmount;
+                            float total_available_amount_use_to_pay = GetUserAvailableBalance() + TransactionsAmount;
 
                             if (initial_debt_amount_to_pay < total_available_amount_use_to_pay)
                             {
@@ -852,12 +974,12 @@ namespace TransactionsMate.Components.Pages
                                 requiredDetails.transactions_info_list.Add(transactionsModel);
                                 float new_available_balance = user_data.UserAvailableBalance + TransactionsAmount;
                                 user_data.UserAvailableBalance = new_available_balance;
-                                await JS.InvokeVoidAsync("console.log", "Transactions success");
+                                await JS.InvokeVoidAsync("console.log", "Transactions success when tr amount < debt amount to pay.");
                                 await JS.InvokeVoidAsync("console.log", $"{transactionsModel.TrId}");
                                 UpdateTransactionProperties();
                                 UpdateDebtProperties();
                                 StateHasChanged();
-                                await JS.InvokeVoidAsync("showAlert", "Transactions success");
+                                await JS.InvokeVoidAsync("showAlert", "Transactions success when tr amount < debt amount to pay.");
                             }
 
                         }
