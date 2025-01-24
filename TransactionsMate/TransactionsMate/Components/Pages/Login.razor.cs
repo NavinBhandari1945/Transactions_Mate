@@ -51,6 +51,7 @@ namespace TransactionsMate.Components.Pages
             var bytes = Encoding.UTF8.GetBytes(password);
             var hash = sha256.ComputeHash(bytes);
             return Convert.ToBase64String(hash);
+
         }
 
         // Method to handle form submission

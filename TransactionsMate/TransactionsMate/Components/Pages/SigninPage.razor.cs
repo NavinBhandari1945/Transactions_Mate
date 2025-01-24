@@ -52,7 +52,7 @@ namespace TransactionsMate.Components.Pages
         }
 
 
-        public async Task SaveUsernameToJsonFile(string username)
+        public async Task SaveUserSignInDetailsToJsonFile(string username)
         {
             try
             {
@@ -82,8 +82,21 @@ namespace TransactionsMate.Components.Pages
                     return;
                 }
 
-                // Add the new username
-                userList.Add(new Dictionary<string, string> { { "Username", username } });
+                string user = "user";
+
+                // Add the new user data as a single dictionary
+                userList.Add(new Dictionary<string, string>
+                    {
+                        { "Username", username },
+                        { "user_userPassword", HashPassword(password) },
+                        { "user_AvailableBalance", initial_available_balance.ToString() },
+                        { "user_DebtBalance", initial_debt_balance.ToString() },
+                        { "user_firstName", first_name },
+                        { "user_lastName", last_name },
+                        { "user_type", user },
+                        {"Date signin" , DateTime.Now.ToString() }
+                    });
+
 
                 // Save the updated list
                 string jsonData = JsonSerializer.Serialize(userList, new JsonSerializerOptions { WriteIndented = true });
@@ -104,9 +117,6 @@ namespace TransactionsMate.Components.Pages
             var hash = sha256.ComputeHash(bytes);
             return Convert.ToBase64String(hash);  
         }
-
-
-
 
         public async Task SignInUser()
         {
@@ -153,10 +163,11 @@ namespace TransactionsMate.Components.Pages
                             user_DebtBalance: initial_debt_balance, 
                             user_firstName: first_name, 
                             user_lastName: last_name,
-                            user_type: "user");
+                            user_type: "user"
+                            );
                         requiredDetails.user_info_list.Add(obj);
                         await JS.InvokeVoidAsync("console.log", "Save user signin data in json file success.");
-                        await SaveUsernameToJsonFile(username.ToString());
+                        await SaveUserSignInDetailsToJsonFile(username.ToString());
                         await JS.InvokeVoidAsync("console.log", "signin success");
                         // await JS.InvokeVoidAsync("console.log", $"{requiredDetails.user_info_list[0].Username}");
                         await JS.InvokeVoidAsync("console.log", "user_info_list count value");
@@ -178,7 +189,7 @@ namespace TransactionsMate.Components.Pages
                         user_lastName: last_name,
                         user_type: "user");
                     requiredDetails.user_info_list.Add(obj);
-                    await SaveUsernameToJsonFile(username.ToString());
+                    await SaveUserSignInDetailsToJsonFile(username.ToString());
                     await JS.InvokeVoidAsync("console.log", "Save user signin data in json file success.");
                     // await JS.InvokeVoidAsync("console.log", $"{requiredDetails.user_info_list[0].Username}");
                     await JS.InvokeVoidAsync("console.log", "user_info_list count value");
