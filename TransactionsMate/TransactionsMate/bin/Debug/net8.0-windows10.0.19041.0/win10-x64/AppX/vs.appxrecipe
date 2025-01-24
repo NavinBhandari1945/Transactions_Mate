@@ -30,7 +30,7 @@
     <AppXManifest Include="D:\College Workplace\3rdyr\sem1\app development\cw\desktop app\TransactionsMate\TransactionsMate\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2025-01-16T23:53:10.865</Modified>
+      <Modified>2025-01-24T05:00:40.296</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -44,11 +44,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\College Workplace\3rdyr\sem1\app development\cw\desktop app\TransactionsMate\TransactionsMate\bin\Debug\net8.0-windows10.0.19041.0\win10-x64\TransactionsMate.dll">
       <PackagePath>TransactionsMate.dll</PackagePath>
-      <Modified>2025-01-16T23:53:09.724</Modified>
+      <Modified>2025-01-24T05:00:39.360</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\College Workplace\3rdyr\sem1\app development\cw\desktop app\TransactionsMate\TransactionsMate\obj\Debug\net8.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>TransactionsMate.exe</PackagePath>
-      <Modified>2025-01-16T23:53:09.768</Modified>
+      <Modified>2025-01-24T05:00:39.422</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\College Workplace\3rdyr\sem1\app development\cw\desktop app\TransactionsMate\TransactionsMate\Resources\Raw\AboutAssets.txt">
       <PackagePath>AboutAssets.txt</PackagePath>

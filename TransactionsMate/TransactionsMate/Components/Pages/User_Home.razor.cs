@@ -947,6 +947,50 @@ namespace TransactionsMate.Components.Pages
 
                     }
 
+                    if (TransactionsAmount == user_data.UserAvailableBalance)
+                    {
+                        try
+                        {
+                            string guid = Guid.NewGuid().ToString();
+                            TransactionsModel transactionsModel = new TransactionsModel
+                                      (
+                                    trId: guid,
+                                    trType: TransactionsType,
+                                    trTitle: TransactionsTittle,
+                                    trFlow: TransactionsFlow,
+                                    trDate: TransactionsDate,
+                                    trSource: TransactionsSource,
+                                    trNote: TransactionsNote,
+                                    trAmount: TransactionsAmount,
+                                    userUsername: requiredDetails.CurrentUserUsername
+                                );
+                            requiredDetails.transactions_info_list.Add(transactionsModel);
+                            var user_data_value = requiredDetails.user_info_list.FirstOrDefault(x => x.Username == requiredDetails.CurrentUserUsername);
+                            user_data_value.UserAvailableBalance = 0.0f;
+                            user_data.UserDebtBalance = 0.0f;
+                            await JS.InvokeVoidAsync("console.log", "Transactions success");
+                            await JS.InvokeVoidAsync("console.log", $"{transactionsModel.TrId}");
+                            UpdateTransactionProperties();
+                            UpdateDebtProperties();
+                            StateHasChanged();
+                            await JS.InvokeVoidAsync("showAlert", "Transactions success");
+                            return;
+
+                        }
+                        catch (Exception obj)
+                        {
+                            await JS.InvokeVoidAsync("console.log", "exception caught.");
+                            await JS.InvokeVoidAsync("console.log", "Trnsactions fail.");
+                            await JS.InvokeVoidAsync("showAlert", "Transactions fail");
+                            return;
+                        }
+
+
+                    }
+
+
+
+
                 }
                 StateHasChanged();
             }

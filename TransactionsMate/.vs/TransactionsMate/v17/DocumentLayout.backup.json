@@ -3,32 +3,12 @@
   "WorkspaceRootPath": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|d:\\college workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\transactionsmate\\transactionsmate\\components\\pages\\login.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|solutionrelative:transactionsmate\\components\\pages\\login.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|d:\\college workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\transactionsmate\\transactionsmate\\components\\pages\\user_home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|solutionrelative:transactionsmate\\components\\pages\\user_home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|d:\\college workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\transactionsmate\\transactionsmate\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|solutionrelative:transactionsmate\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|d:\\college workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\transactionsmate\\transactionsmate\\components\\pages\\signinpage.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|solutionrelative:transactionsmate\\components\\pages\\signinpage.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|d:\\college workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\transactionsmate\\transactionsmate\\components\\pages\\user_home.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|solutionrelative:transactionsmate\\components\\pages\\user_home.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|d:\\college workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\transactionsmate\\transactionsmate\\models\\userinfomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|solutionrelative:transactionsmate\\models\\userinfomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|d:\\college workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\transactionsmate\\transactionsmate\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|solutionrelative:transactionsmate\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|d:\\college workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\transactionsmate\\transactionsmate\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BA1564DF-0C21-4991-87B5-046872569F4C}|TransactionsMate\\TransactionsMate.csproj|solutionrelative:transactionsmate\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,94 +18,33 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "UserInfoModel.cs",
-              "DocumentMoniker": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Models\\UserInfoModel.cs",
-              "RelativeDocumentMoniker": "TransactionsMate\\Models\\UserInfoModel.cs",
-              "ToolTip": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Models\\UserInfoModel.cs",
-              "RelativeToolTip": "TransactionsMate\\Models\\UserInfoModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-16T06:56:32.518Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "User_Home.razor",
-              "DocumentMoniker": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Pages\\User_Home.razor",
-              "RelativeDocumentMoniker": "TransactionsMate\\Components\\Pages\\User_Home.razor",
-              "ToolTip": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Pages\\User_Home.razor",
-              "RelativeToolTip": "TransactionsMate\\Components\\Pages\\User_Home.razor",
-              "ViewState": "AgIAABkBAAAAAAAAAAAAACgBAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-16T06:41:08.592Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MainLayout.razor",
-              "DocumentMoniker": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Layout\\MainLayout.razor",
-              "RelativeDocumentMoniker": "TransactionsMate\\Components\\Layout\\MainLayout.razor",
-              "ToolTip": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Layout\\MainLayout.razor",
-              "RelativeToolTip": "TransactionsMate\\Components\\Layout\\MainLayout.razor",
-              "ViewState": "AgIAADEAAAAAAAAAAAAAwEUAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-15T16:14:21.191Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "User_Home.razor.cs",
               "DocumentMoniker": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Pages\\User_Home.razor.cs",
               "RelativeDocumentMoniker": "TransactionsMate\\Components\\Pages\\User_Home.razor.cs",
               "ToolTip": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Pages\\User_Home.razor.cs",
               "RelativeToolTip": "TransactionsMate\\Components\\Pages\\User_Home.razor.cs",
-              "ViewState": "AgIAALcDAAAAAAAAAAAwwMEDAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAK0DAAAAAAAAAAAswMQDAABVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T08:05:26.28Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Login.razor.cs",
-              "DocumentMoniker": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Pages\\Login.razor.cs",
-              "RelativeDocumentMoniker": "TransactionsMate\\Components\\Pages\\Login.razor.cs",
-              "ToolTip": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Pages\\Login.razor.cs",
-              "RelativeToolTip": "TransactionsMate\\Components\\Pages\\Login.razor.cs",
-              "ViewState": "AgIAAD0AAAAAAAAAAAAcwE0AAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T08:02:33.112Z",
+              "WhenOpened": "2025-01-24T04:54:34.991Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SigninPage.razor.cs",
-              "DocumentMoniker": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Pages\\SigninPage.razor.cs",
-              "RelativeDocumentMoniker": "TransactionsMate\\Components\\Pages\\SigninPage.razor.cs",
-              "ToolTip": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Pages\\SigninPage.razor.cs",
-              "RelativeToolTip": "TransactionsMate\\Components\\Pages\\SigninPage.razor.cs",
-              "ViewState": "AgIAAEsAAAAAAAAAAADgv3YAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-15T07:40:56.634Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "MauiProgram.cs",
-              "DocumentMoniker": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\MauiProgram.cs",
-              "RelativeDocumentMoniker": "TransactionsMate\\MauiProgram.cs",
-              "ToolTip": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\MauiProgram.cs",
-              "RelativeToolTip": "TransactionsMate\\MauiProgram.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-01T05:47:40.813Z"
+              "DocumentIndex": 1,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "TransactionsMate\\Components\\Layout\\MainLayout.razor",
+              "ToolTip": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "TransactionsMate\\Components\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEUAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-15T16:14:21.191Z",
+              "EditorCaption": ""
             }
           ]
         }
