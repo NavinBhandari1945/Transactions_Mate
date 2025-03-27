@@ -32,7 +32,7 @@
               "RelativeDocumentMoniker": "TransactionsMate\\Components\\Pages\\User_Home.razor",
               "ToolTip": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Pages\\User_Home.razor",
               "RelativeToolTip": "TransactionsMate\\Components\\Pages\\User_Home.razor",
-              "ViewState": "AgIAAOEAAAAAAAAAAAAAAOAAAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAANUAAAAAAAAAAAAAAOAAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-01-24T05:18:59.326Z",
               "EditorCaption": ""
@@ -45,7 +45,7 @@
               "RelativeDocumentMoniker": "TransactionsMate\\Components\\Pages\\User_Home.razor.cs",
               "ToolTip": "D:\\College Workplace\\3rdyr\\sem1\\app development\\cw\\desktop app\\TransactionsMate\\TransactionsMate\\Components\\Pages\\User_Home.razor.cs",
               "RelativeToolTip": "TransactionsMate\\Components\\Pages\\User_Home.razor.cs",
-              "ViewState": "AgIAAC4DAAAAAAAAAAAAwEEDAABKAAAAAAAAAA==",
+              "ViewState": "AgIAAA4EAAAAAAAAAAAiwCgEAABXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-24T04:54:34.991Z",
               "EditorCaption": ""
@@ -60,8 +60,7 @@
               "RelativeToolTip": "TransactionsMate\\Components\\Layout\\MainLayout.razor",
               "ViewState": "AgIAACEAAAAAAAAAAAAAAEUAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-15T16:14:21.191Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-15T16:14:21.191Z"
             }
           ]
         }
